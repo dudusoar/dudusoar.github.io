@@ -1,0 +1,53 @@
+baseURL: "https://dudusoar.github.io/"
+languageCode: "en-us"
+title: "Yuchen Du"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+
+params:
+  env: production
+  description: "Blog, tutorials, projects, and photos."
+  author: "Yuchen Du"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowToc: true
+
+  homeInfoParams:
+    Title: "Hi, I'm Yuchen"
+    Content: "I write about transportation AI, simulation, optimization, and travel."
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/dudusoar"
+    - name: linkedin
+      url: "https://www.linkedin.com/"
+    - name: email
+      url: "mailto:your-email@example.com"
+
+menu:
+  main:
+    - identifier: posts
+      name: Blog
+      url: /posts/
+      weight: 10
+    - identifier: tutorials
+      name: Tutorials
+      url: /tutorials/
+      weight: 20
+    - identifier: projects
+      name: Projects
+      url: /projects/
+      weight: 30
+    - identifier: photos
+      name: Photos
+      url: /photos/
+      weight: 40
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 50
