@@ -1,5 +1,7 @@
 ---
 date: '2025-12-28T19:34:39-05:00'
-draft: true
+draft: false
 title: 'About'
 ---
+
+working on.
