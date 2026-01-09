@@ -4,4 +4,6 @@ draft: false
 title: 'Projects'
 ---
 
-working on.
+Here are some of my recent research projects and publications.
+
+<!-- This page automatically lists all projects in the projects folder -->

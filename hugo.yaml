@@ -25,9 +25,9 @@ params:
     - name: github
       url: "https://github.com/dudusoar"
     - name: linkedin
-      url: "https://www.linkedin.com/"
+      url: "https://www.linkedin.com/in/yuchen-du-/"
     - name: email
-      url: "mailto:your-email@example.com"
+      url: "dyuchen313@gmail.com"
 
 menu:
   main:
