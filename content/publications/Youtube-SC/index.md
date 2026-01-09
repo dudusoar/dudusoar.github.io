@@ -2,7 +2,6 @@
 title: "Understanding Social Perceptions of Sidewalk Delivery Robots via YouTube Sentiment Analysis"
 date: 2026-01-08T10:00:00-05:00
 draft: false
-project: true
 slug: "youtube-sc"
 aliases: ["/projects/youtube-sc/", "/publications/youtube-sc/"]
 tags: ["paper","published","social perception", "sidewalk delivery robots", "sentiment analysis", "NLP", "machine learning","topic modeling"]
