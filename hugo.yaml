@@ -39,15 +39,19 @@ menu:
       name: Tutorials
       url: /tutorials/
       weight: 20
+    - identifier: publications
+      name: Publications
+      url: /publications/
+      weight: 30
     - identifier: projects
       name: Projects
       url: /projects/
-      weight: 30
+      weight: 40
     - identifier: photos
       name: Photos
       url: /photos/
-      weight: 40
+      weight: 50
     - identifier: about
       name: About
       url: /about/
-      weight: 50
+      weight: 60
