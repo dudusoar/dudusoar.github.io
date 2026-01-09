@@ -2,6 +2,7 @@
 draft: false
 title: 'Publications'
 description: 'Academic publications and research papers'
+ShowShareButtons: false
 ---
 
 Here you can find my academic publications, research papers, and scholarly work.

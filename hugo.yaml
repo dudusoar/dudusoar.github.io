@@ -26,8 +26,12 @@ params:
       url: "https://github.com/dudusoar"
     - name: linkedin
       url: "https://www.linkedin.com/in/yuchen-du-/"
+    - name: googlescholar
+      url: "https://scholar.google.com/citations?user=E_3P15cAAAAJ"
     - name: email
       url: "dyuchen313@gmail.com"
+    - name: cv
+      url: "/cv.pdf"
 
 menu:
   main:
