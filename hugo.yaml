@@ -5,13 +5,18 @@ theme: "PaperMod"
 
 enableRobotsTXT: true
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 params:
   env: production
   description: "Blog, tutorials, projects, and photos."
   author: "Yuchen Du"
   defaultTheme: auto
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowCodeCopyButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true

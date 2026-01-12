@@ -89,3 +89,16 @@ This log tracks content updates including new posts, tutorials, projects, photos
 **Tags:** citation, bibtex, formatting
 
 ---
+
+### 2026-01-12 15:35 - [Content]
+
+**Description:** Added new publication: SDR Two-Stage paper blog post with images and GitHub link. Fixed publications section structure by renaming index.md to _index.md to properly display publication list.
+
+**Files affected:**
+- ontent/publications/index.md
+- hugo.yaml
+- content/publications/SDR-Two-Stage/
+- content/publications/_index.md
+- content/publications/tmpclaude-0b5f-cwd
+
+---

@@ -1,4 +1,5 @@
 ---
+date: '2025-12-28T19:34:51-05:00'
 draft: false
 title: 'Publications'
 description: 'Academic publications and research papers'

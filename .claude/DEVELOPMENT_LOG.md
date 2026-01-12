@@ -42,3 +42,20 @@ This log tracks code changes, theme modifications, configuration updates, and te
 **Tags:** bug-fix, projects, hugo-config, url-routing
 
 ---
+
+### 2026-01-12 15:35 - [Development]
+
+**Description:** Enabled unsafe HTML rendering in hugo.yaml to allow HTML tags in Markdown content
+
+**Files affected:**
+- claude/CONTENT_LOG.md
+- content/publications/index.md
+- hugo.yaml
+- content/publications/SDR-Two-Stage/
+- content/publications/_index.md
+- content/publications/tmpclaude-0b5f-cwd
+- tmpclaude-2ce7-cwd
+
+**Tags:** config, markdown
+
+---
