@@ -64,3 +64,64 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = Array.from(document.querySelectorAll(".photo-album .photo-frame"));
+        if (!links.length) return;
+
+        const lightbox = document.createElement("div");
+        lightbox.className = "photo-lightbox";
+        lightbox.hidden = true;
+        lightbox.innerHTML = [
+            '<button type="button" class="photo-lightbox__close" aria-label="Close photo">x</button>',
+            '<button type="button" class="photo-lightbox__prev" aria-label="Previous photo">&lt;</button>',
+            '<img alt="">',
+            '<button type="button" class="photo-lightbox__next" aria-label="Next photo">&gt;</button>'
+        ].join("");
+        document.body.appendChild(lightbox);
+
+        const image = lightbox.querySelector("img");
+        const closeButton = lightbox.querySelector(".photo-lightbox__close");
+        const prevButton = lightbox.querySelector(".photo-lightbox__prev");
+        const nextButton = lightbox.querySelector(".photo-lightbox__next");
+        let currentIndex = 0;
+
+        function show(index) {
+            currentIndex = (index + links.length) % links.length;
+            const link = links[currentIndex];
+            const thumb = link.querySelector("img");
+            image.src = link.href;
+            image.alt = thumb ? thumb.alt : "";
+            lightbox.hidden = false;
+            document.body.style.overflow = "hidden";
+        }
+
+        function close() {
+            lightbox.hidden = true;
+            image.removeAttribute("src");
+            document.body.style.overflow = "";
+        }
+
+        links.forEach(function (link, index) {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                show(index);
+            });
+        });
+
+        closeButton.addEventListener("click", close);
+        prevButton.addEventListener("click", function () { show(currentIndex - 1); });
+        nextButton.addEventListener("click", function () { show(currentIndex + 1); });
+        lightbox.addEventListener("click", function (event) {
+            if (event.target === lightbox) close();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (lightbox.hidden) return;
+            if (event.key === "Escape") close();
+            if (event.key === "ArrowLeft") show(currentIndex - 1);
+            if (event.key === "ArrowRight") show(currentIndex + 1);
+        });
+    });
+</script>

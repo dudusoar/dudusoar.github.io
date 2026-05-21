@@ -12,7 +12,7 @@ photoAlbum: true
 ---
 
 <div class="photo-album">
-  <a class="photo-frame photo-frame-featured" href="yosemite-01.jpg">
+  <a class="photo-frame" href="yosemite-01.jpg">
     <img src="yosemite-01.jpg" alt="Yosemite Valley view from Tunnel View" loading="eager">
   </a>
   <a class="photo-frame" href="yosemite-02.jpg">
