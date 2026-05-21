@@ -1,7 +1,7 @@
 {{- define "main" }}
 <article class="photos-shell photos-album-page">
   <header class="photos-header">
-    {{ partial "breadcrumbs.html" . }}
+    <a class="photos-back" href="{{ "photos/" | relLangURL }}" aria-label="Back to all photo albums">&larr; Photos</a>
     <h1>{{ .Title }}</h1>
     {{- with .Description }}
     <p class="photos-description">{{ . }}</p>
