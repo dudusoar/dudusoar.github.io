@@ -1,10 +1,11 @@
 ---
 title: "Reviewing the Reviewer: Graph-Enhanced LLMs for E-commerce Appeal Adjudication"
 date: 2026-02-26T20:00:00-05:00
+lastmod: 2026-05-21
 draft: false
 slug: "amazon-rj"
 aliases: ["/projects/amazon-rj/"]
-tags: ["paper","preprint","LLM","graph reasoning","e-commerce","knowledge graph","appeal adjudication","KDD"]
+tags: ["paper","preprint","LLM","graph reasoning","e-commerce","knowledge graph","appeal adjudication","arXiv"]
 categories: ["Research", "Publications"]
 author: "Yuchen Du"
 description: "A conflict-aware graph reasoning framework that learns from human correction signals in hierarchical review workflows to automate e-commerce seller appeal adjudication."
@@ -21,8 +22,10 @@ ShowShareButtons: false
 
 - **Title**: Reviewing the Reviewer: Graph-Enhanced LLMs for E-commerce Appeal Adjudication
 - **Authors**: **Yuchen Du**, Ashley Li, Zixi Huang
-- **Venue**: KDD 2026 Applied Data Science Track (under review)
+- **Status**: arXiv preprint, 2026
 - **arXiv**: [2603.19267](https://arxiv.org/abs/2603.19267)
+
+**Current status:** this page now tracks the public arXiv preprint record only; earlier venue-status language has been removed.
 
 *This research was conducted during Yuchen Du's internship at Amazon, in collaboration with Ashley Li and Zixi Huang.*
 
@@ -130,6 +133,6 @@ The EAFD framework is not specific to e-commerce. Any domain with hierarchical h
 # Resources & Links
 
 - 📄 **arXiv**: [arXiv:2603.19267](https://arxiv.org/abs/2603.19267)
-- 🏛️ **Venue**: KDD 2026 Applied Data Science Track
+- 📄 **Status**: arXiv preprint, 2026
 
 ---

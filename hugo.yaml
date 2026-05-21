@@ -24,7 +24,7 @@ params:
 
   homeInfoParams:
     Title: "Hi, I'm Yuchen"
-    Content: "I write about transportation AI, simulation, optimization, and travel."
+    Content: "I work on AI-driven optimization, LLM reasoning systems, and transportation simulation."
 
   socialIcons:
     - name: github
@@ -34,9 +34,9 @@ params:
     - name: googlescholar
       url: "https://scholar.google.com/citations?user=E_3P15cAAAAJ"
     - name: email
-      url: "dyuchen313@gmail.com"
+      url: "mailto:du313@purdue.edu"
     - name: cv
-      url: "/cv.pdf"
+      url: "/cv/"
 
 menu:
   main:

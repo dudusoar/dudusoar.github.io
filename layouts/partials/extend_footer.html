@@ -1,0 +1,66 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("email-modal");
+        if (!modal) return;
+
+        const address = document.getElementById("email-modal-address");
+        const status = modal.querySelector("[data-email-copy-status]");
+        const openButtons = document.querySelectorAll("[data-email-modal-open]");
+        const closeButtons = modal.querySelectorAll("[data-email-modal-close]");
+        const copyButton = modal.querySelector("[data-email-copy]");
+
+        function openModal(email) {
+            if (email && address) address.textContent = email;
+            if (status) status.textContent = "";
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("email-modal-open");
+            if (copyButton) copyButton.focus();
+        }
+
+        function closeModal() {
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("email-modal-open");
+        }
+
+        async function copyEmail() {
+            const email = address ? address.textContent.trim() : "";
+            if (!email) return;
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(email);
+                } else {
+                    const input = document.createElement("textarea");
+                    input.value = email;
+                    input.setAttribute("readonly", "");
+                    input.style.position = "fixed";
+                    input.style.opacity = "0";
+                    document.body.appendChild(input);
+                    input.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(input);
+                }
+                if (status) status.textContent = "Copied.";
+            } catch (error) {
+                if (status) status.textContent = "Copy failed. Please select the address manually.";
+            }
+        }
+
+        openButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                openModal(button.getAttribute("data-email"));
+            });
+        });
+
+        closeButtons.forEach(function (button) {
+            button.addEventListener("click", closeModal);
+        });
+
+        if (copyButton) copyButton.addEventListener("click", copyEmail);
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+                closeModal();
+            }
+        });
+    });
+</script>

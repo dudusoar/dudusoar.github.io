@@ -1,0 +1,33 @@
+<div class="social-icons" {{ with .align}}align="{{.}}" {{- end }}>
+    {{- range site.Params.socialIcons }}
+    {{- $name := .name | lower }}
+    {{- if eq $name "email" }}
+    <button type="button" class="social-icon-button" data-email-modal-open
+        data-email="{{ replaceRE "^mailto:" "" (trim .url " ") }}" title="{{ (.title | default .name) | title }}"
+        aria-label="Show email address">
+        {{ partial "svg.html" . }}
+    </button>
+    {{- else if eq $name "cv" }}
+    <a href="{{ trim .url " " | safeURL }}" title="{{ (.title | default .name) | title }}"
+        aria-label="Preview CV">
+        {{ partial "svg.html" . }}
+    </a>
+    {{- else }}
+    <a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
+        title="{{ (.title | default .name) | title }}">
+        {{ partial "svg.html" . }}
+    </a>
+    {{- end }}
+    {{- end }}
+</div>
+
+<div class="email-modal" id="email-modal" aria-hidden="true">
+    <div class="email-modal__backdrop" data-email-modal-close></div>
+    <div class="email-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="email-modal-title">
+        <button type="button" class="email-modal__close" data-email-modal-close aria-label="Close email dialog">x</button>
+        <h2 id="email-modal-title">Email</h2>
+        <p class="email-modal__address" id="email-modal-address">du313@purdue.edu</p>
+        <button type="button" class="email-modal__copy" data-email-copy>Copy</button>
+        <p class="email-modal__status" data-email-copy-status aria-live="polite"></p>
+    </div>
+</div>

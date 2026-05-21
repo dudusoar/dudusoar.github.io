@@ -9,11 +9,11 @@ hideMeta: true
 showToc: false
 ---
 
-I'm a Ph.D. candidate in Industrial Engineering Technology at Purdue University, expecting to graduate in August 2026. My research sits at the intersection of AI-driven optimization, autonomous systems, and large language model reasoning — I'm interested in how we can build AI systems that make reliable decisions under uncertainty, especially when the stakes are high.
+I'm a Ph.D. candidate in Industrial Engineering Technology at Purdue University, expecting to graduate in Fall 2026. My work focuses on AI systems that make reliable decisions under uncertainty, from graph-enhanced LLM agents for high-stakes review workflows to optimization and simulation models for transportation and autonomous delivery systems.
 
-Most recently, I interned as an Applied Scientist at Amazon, where I designed a graph-enhanced LLM reasoning system for automated decision-making in e-commerce. The work resulted in a [first-authored paper](/publications/amazon-rj/) submitted to KDD 2026. Before that, my PhD research focused on optimization and simulation for autonomous delivery robot fleets — figuring out how many robots you need, where to put them, and how to route them efficiently.
+Most recently, I interned as an Applied Scientist at Amazon, where I worked on seller-appeal adjudication: a setting where operational logs, policy actions, and historical correction patterns must be reconciled before a decision can be trusted. The work led to a [first-authored arXiv preprint](/publications/amazon-rj/) on graph-enhanced LLM agents that ground review decisions in verifiable Evidence-Action-Factor-Decision graphs.
 
-I'm looking for full-time opportunities starting Summer 2026 on the West Coast. You can find my CV [here](/cv.pdf).
+I'm open to full-time Applied Scientist, Research Scientist, or ML/optimization roles starting Fall 2026. You can find my CV [here](/cv/).
 
 ---
 
@@ -29,7 +29,7 @@ I'm looking for full-time opportunities starting Summer 2026 on the West Coast. 
 
 | Degree | Institution | Years |
 |--------|-------------|-------|
-| Ph.D., Industrial Engineering Technology | Purdue University | 2023 – 2026 (expected) |
+| Ph.D., Industrial Engineering Technology | Purdue University | 2023 – Fall 2026 (expected) |
 | M.S., Data Science, Industrial & Operations Engineering | University of Michigan | 2021 – 2023 |
 | B.S., Industrial Engineering | South China University of Technology | 2017 – 2021 |
 
@@ -39,14 +39,14 @@ I'm looking for full-time opportunities starting Summer 2026 on the West Coast. 
 
 **Amazon — Applied Scientist Intern** | Seattle, WA | Aug – Nov 2025
 
-Built a production-grade multi-agent LLM system for automating seller-appeal adjudication. Introduced the EAFD (Evidence-Action-Factor-Decision) schema to ground LLM reasoning in verifiable operations, achieving 96.3% alignment with human experts in production (up from 70.8% with LLMs alone).
+Built a graph-enhanced multi-agent LLM system for seller-appeal adjudication, transforming operational logs and policy actions into Evidence-Action-Factor-Decision graphs for evidence verification and evidence-gap detection. The system achieved 96.3% production alignment with human experts, compared with a 70.8% LLM-only baseline.
 
 ---
 
 ## Selected Publications
 
 1. **Reviewing the Reviewer: Graph-Enhanced LLMs for E-commerce Appeal Adjudication**
-   Du, Li, Huang — Under review at KDD 2026 · [arXiv](https://arxiv.org/abs/2603.19267) · [Details](/publications/amazon-rj/)
+   Du, Li, Huang — arXiv preprint, 2026 · [arXiv](https://arxiv.org/abs/2603.19267) · [Details](/publications/amazon-rj/)
 
 2. **Two-stage stochastic fleet and battery sizing with routing optimization for sidewalk delivery robots**
    Du, Yang, Chow, Le — Transportation Research Part E, 2025 · [DOI](https://doi.org/10.1016/j.tre.2025.104220) · [Details](/publications/sdr-two-stage/)
@@ -61,4 +61,4 @@ Built a production-grade multi-agent LLM system for automating seller-appeal adj
 
 ## Beyond Research
 
-When I'm not debugging optimization models or wrangling LLM outputs, you'll find me exploring new cities with a camera, experimenting with game development in Unity, or planning the next road trip.
+Outside research, I like visiting national parks, making pixel art, playing RTS games, mostly Age of Empires IV, and maintaining my Obsidian knowledge system.
