@@ -11,18 +11,3 @@ photoAlbum: true
 ---
 
 Small field notes from places I have visited.
-
-<div class="photo-collection-grid">
-  <a class="photo-collection-card" href="/photos/yosemite/">
-    <img src="/photos/yosemite/yosemite-01.jpg" alt="Yosemite Valley from Tunnel View" loading="eager">
-    <span>Yosemite</span>
-  </a>
-  <a class="photo-collection-card" href="/photos/bryce-canyon/">
-    <img src="/photos/bryce-canyon/bryce-canyon-01.jpg" alt="Bryce Canyon National Park" loading="lazy">
-    <span>Bryce Canyon</span>
-  </a>
-  <a class="photo-collection-card" href="/photos/glacier/">
-    <img src="/photos/glacier/glacier-01.jpg" alt="Glacier National Park" loading="lazy">
-    <span>Glacier</span>
-  </a>
-</div>

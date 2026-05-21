@@ -1,0 +1,104 @@
+{{- define "main" }}
+<article class="photos-shell photos-album-page">
+  <header class="photos-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}
+    <p class="photos-description">{{ . }}</p>
+    {{- end }}
+  </header>
+
+  {{- $images := sort (.Resources.ByType "image") "Name" }}
+  {{- if $images }}
+  <div class="photos-masonry" id="photo-gallery">
+    {{- range $index, $img := $images }}
+    {{- $thumb := $img.Fit "720x1080 q84" }}
+    {{- $ratio := div (float $img.Width) (float $img.Height) }}
+    <a class="photo-tile" href="{{ $img.RelPermalink }}" data-photo-ratio="{{ printf "%.6f" $ratio }}" data-pswp-width="{{ $img.Width }}" data-pswp-height="{{ $img.Height }}" target="_blank">
+      <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $.Title }} photo {{ add $index 1 }}" loading="{{ if eq $index 0 }}eager{{ else }}lazy{{ end }}" decoding="async">
+    </a>
+    {{- end }}
+  </div>
+  {{- end }}
+</article>
+
+{{- if $images }}
+<script type="module">
+  import PhotoSwipeLightbox from "https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js";
+
+  const gallery = document.getElementById("photo-gallery");
+
+  function targetRowHeight() {
+    if (window.innerWidth <= 760) return 150;
+    if (window.innerWidth <= 1100) return 215;
+    return 255;
+  }
+
+  function layoutJustifiedRows() {
+    if (!gallery) return;
+
+    const items = Array.from(gallery.querySelectorAll(".photo-tile"));
+    const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
+    const pageInset = window.innerWidth <= 760 ? 24 : 32;
+    const galleryWidth = Math.min(gallery.clientWidth, viewportWidth - pageInset);
+    if (!items.length || !galleryWidth) return;
+
+    const styles = window.getComputedStyle(gallery);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 8;
+    const target = targetRowHeight();
+    const maxHeight = target * 1.28;
+
+    let row = [];
+    let ratioSum = 0;
+
+    function applyRow(rowItems, sum, isLast) {
+      const rowGap = gap * Math.max(rowItems.length - 1, 0);
+      let rowHeight = (galleryWidth - rowGap) / sum;
+      if (isLast) rowHeight = Math.min(target, rowHeight);
+      rowHeight = Math.max(110, Math.min(maxHeight, rowHeight));
+
+      rowItems.forEach((item) => {
+        const ratio = parseFloat(item.dataset.photoRatio) || 1;
+        item.style.width = `${Math.floor(rowHeight * ratio)}px`;
+        item.style.height = `${Math.floor(rowHeight)}px`;
+      });
+    }
+
+    items.forEach((item) => {
+      const ratio = parseFloat(item.dataset.photoRatio) || 1;
+      row.push(item);
+      ratioSum += ratio;
+
+      const rowGap = gap * Math.max(row.length - 1, 0);
+      const rowHeight = (galleryWidth - rowGap) / ratioSum;
+      if (rowHeight <= maxHeight || row.length >= 5) {
+        applyRow(row, ratioSum, false);
+        row = [];
+        ratioSum = 0;
+      }
+    });
+
+    if (row.length) applyRow(row, ratioSum, true);
+    gallery.classList.add("is-justified");
+  }
+
+  let resizeFrame = null;
+  function scheduleLayout() {
+    if (resizeFrame) window.cancelAnimationFrame(resizeFrame);
+    resizeFrame = window.requestAnimationFrame(layoutJustifiedRows);
+  }
+
+  layoutJustifiedRows();
+  window.addEventListener("load", layoutJustifiedRows);
+  window.addEventListener("resize", scheduleLayout);
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#photo-gallery",
+    children: "a",
+    pswpModule: () => import("https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js")
+  });
+
+  lightbox.init();
+</script>
+{{- end }}
+{{- end }}
