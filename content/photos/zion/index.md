@@ -3,7 +3,7 @@ title: "Zion"
 date: 2026-05-22
 draft: false
 description: "A small Zion National Park photo set."
-coverImage: "zion-01.jpg"
+coverImage: "zion-10.jpg"
 ShowShareButtons: false
 ShowReadingTime: false
 ShowWordCount: false

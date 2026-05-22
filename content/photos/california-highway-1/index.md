@@ -3,7 +3,7 @@ title: "California Highway 1"
 date: 2026-05-22
 draft: false
 description: "A small California Highway 1 photo set."
-coverImage: "california-highway-1-01.jpg"
+coverImage: "california-highway-1-14.jpg"
 ShowShareButtons: false
 ShowReadingTime: false
 ShowWordCount: false

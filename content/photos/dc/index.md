@@ -3,7 +3,7 @@ title: "Washington, DC"
 date: 2026-05-22
 draft: false
 description: "A small Washington, DC photo set."
-coverImage: "dc-01.jpg"
+coverImage: "dc-06.jpg"
 ShowShareButtons: false
 ShowReadingTime: false
 ShowWordCount: false

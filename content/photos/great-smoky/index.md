@@ -3,7 +3,7 @@ title: "Great Smoky"
 date: 2026-05-21
 draft: false
 description: "A small Great Smoky Mountains photo set."
-coverImage: "great-smoky-01.jpg"
+coverImage: "great-smoky-09.jpg"
 ShowShareButtons: false
 ShowReadingTime: false
 ShowWordCount: false
