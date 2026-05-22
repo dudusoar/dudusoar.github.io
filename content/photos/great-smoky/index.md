@@ -10,6 +10,7 @@ ShowWordCount: false
 hideMeta: true
 showToc: false
 photoAlbum: true
+hiddenInHomeList: true
 ---
 
 <div class="photo-album">

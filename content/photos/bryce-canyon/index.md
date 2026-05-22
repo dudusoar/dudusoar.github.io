@@ -10,4 +10,5 @@ ShowWordCount: false
 hideMeta: true
 showToc: false
 photoAlbum: true
+hiddenInHomeList: true
 ---
