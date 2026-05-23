@@ -12,7 +12,7 @@ markup:
 
 params:
   env: production
-  description: "Blog, tutorials, projects, and photos."
+  description: "Yuchen Du's research, publications, projects, writing, and photo field notes."
   author: "Yuchen Du"
   defaultTheme: auto
   ShowReadingTime: true

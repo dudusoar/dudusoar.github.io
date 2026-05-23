@@ -1,0 +1,104 @@
+{{- define "main" }}
+<section class="home-hub" aria-labelledby="home-title">
+    <div class="home-hub__content">
+        <p class="home-hub__eyebrow">AI systems, optimization, and transportation simulation</p>
+        <h1 id="home-title">Yuchen Du</h1>
+        <p class="home-hub__summary">
+            I am a Ph.D. candidate at Purdue University building reliable AI systems for decisions under uncertainty,
+            from graph-enhanced LLM agents to stochastic optimization and simulation models for transportation systems.
+        </p>
+        <div class="home-hub__actions" aria-label="Primary pages">
+            <a href="{{ "/publications/" | relURL }}">Publications</a>
+            <a href="{{ "/projects/" | relURL }}">Projects</a>
+            <a href="{{ "/cv/" | relURL }}">CV</a>
+            <a href="{{ "/about/" | relURL }}">About</a>
+        </div>
+        <footer class="home-hub__social">
+            {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+        </footer>
+    </div>
+    <a class="home-hub__photo" href="{{ "/photos/" | relURL }}" aria-label="Open photo field notes">
+        <img src="{{ "/photos/california-highway-1/california-highway-1-14.jpg" | relURL }}" alt="California Highway 1 coastline" loading="eager">
+        <span>Field notes and photos</span>
+    </a>
+</section>
+
+<section class="home-section" aria-labelledby="featured-work">
+    <div class="home-section__header">
+        <p>Selected Work</p>
+        <h2 id="featured-work">Research</h2>
+    </div>
+    <div class="home-feature-grid">
+        <a class="home-feature-card" href="{{ "/publications/amazon-rj/" | relURL }}">
+            <span>LLM Reasoning</span>
+            <strong>Reviewing the Reviewer</strong>
+            <em>Graph-enhanced LLM agents for e-commerce appeal adjudication, grounded in verifiable Evidence-Action-Factor-Decision graphs.</em>
+        </a>
+        <a class="home-feature-card" href="{{ "/publications/sdr-two-stage/" | relURL }}">
+            <span>Stochastic Optimization</span>
+            <strong>Sidewalk Delivery Robot Fleet Design</strong>
+            <em>A two-stage framework for fleet and battery sizing under uncertain delivery demand.</em>
+        </a>
+        <a class="home-feature-card" href="{{ "/publications/youtube-sc/" | relURL }}">
+            <span>Transportation Analytics</span>
+            <strong>Public Perceptions of Delivery Robots</strong>
+            <em>Sentiment and topic analysis of YouTube discussions around sidewalk delivery robots.</em>
+        </a>
+    </div>
+</section>
+
+<section class="home-section home-split" aria-label="Research focus and personal notes">
+    <div>
+        <div class="home-section__header">
+            <p>Focus</p>
+            <h2>What I work on</h2>
+        </div>
+        <ul class="home-focus-list">
+            <li><strong>LLM reasoning systems</strong><span>Knowledge graphs, action grounding, and auditable decision workflows.</span></li>
+            <li><strong>Optimization under uncertainty</strong><span>Fleet sizing, routing, resource allocation, and stochastic approximation.</span></li>
+            <li><strong>Autonomous transportation systems</strong><span>Simulation and operational planning for delivery robots and EVs.</span></li>
+        </ul>
+    </div>
+    <div class="home-note">
+        <div class="home-section__header">
+            <p>Beyond Research</p>
+            <h2>Small signals outside the CV</h2>
+        </div>
+        <p>
+            Outside research, I like visiting national parks, making pixel art, playing RTS games, mostly Age of Empires IV,
+            and maintaining my Obsidian knowledge system.
+        </p>
+        <a href="{{ "/photos/" | relURL }}">Browse photos</a>
+    </div>
+</section>
+
+{{- $recentPages := where site.RegularPages "Section" "in" (slice "posts" "publications" "projects") }}
+{{- $recentPages = where $recentPages "Params.hiddenInHomeList" "!=" true }}
+{{- $recentPages = first 5 $recentPages }}
+{{- if $recentPages }}
+<section class="home-section home-updates" aria-labelledby="recent-updates">
+    <div class="home-section__header">
+        <p>Recent</p>
+        <h2 id="recent-updates">Writing and updates</h2>
+    </div>
+    {{- range $recentPages }}
+    <article class="post-entry">
+        <header class="entry-header">
+            <h2 class="entry-hint-parent">{{ .Title }}</h2>
+        </header>
+        {{- if (ne (.Param "hideSummary") true) }}
+        <div class="entry-content">
+            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <footer class="entry-footer">
+            {{- partial "post_meta.html" . -}}
+        </footer>
+        {{- end }}
+        <a class="entry-link" aria-label="Open {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{- end }}
+</section>
+{{- end }}
+{{- end }}

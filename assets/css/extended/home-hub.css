@@ -1,0 +1,244 @@
+.home-hub {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.75fr);
+    gap: 28px;
+    align-items: stretch;
+    min-height: 360px;
+    margin: 18px 0 42px;
+}
+
+.home-hub__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 34px 0;
+}
+
+.home-hub__eyebrow,
+.home-section__header p,
+.home-feature-card span {
+    margin: 0 0 10px;
+    color: var(--secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.home-hub h1 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 3.4rem;
+    line-height: 1.05;
+}
+
+.home-hub__summary {
+    max-width: 680px;
+    margin: 18px 0 0;
+    color: var(--content);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.home-hub__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.home-hub__actions a,
+.home-note a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 14px;
+    color: var(--primary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: none;
+}
+
+.home-hub__actions a:first-child {
+    color: var(--theme);
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.home-hub__social {
+    margin-top: 16px;
+}
+
+.home-hub__social .social-icons {
+    margin-inline-start: -10px;
+}
+
+.home-hub__photo {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+    color: #fff;
+    border-radius: var(--radius);
+    box-shadow: none;
+}
+
+.home-hub__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.95);
+}
+
+.home-hub__photo span {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.48);
+    border-radius: var(--radius);
+}
+
+.home-section {
+    margin: 42px 0;
+}
+
+.home-section__header {
+    margin-bottom: 18px;
+}
+
+.home-section__header h2 {
+    max-width: 760px;
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.55rem;
+    line-height: 1.3;
+}
+
+.home-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.home-feature-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+    padding: 20px;
+    color: var(--primary);
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: none;
+}
+
+.home-feature-card strong {
+    margin-bottom: 12px;
+    font-size: 1.08rem;
+    line-height: 1.35;
+}
+
+.home-feature-card em {
+    color: var(--secondary);
+    font-size: 0.92rem;
+    font-style: normal;
+    line-height: 1.65;
+}
+
+.home-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+    gap: 28px;
+}
+
+.home-focus-list {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.home-focus-list li {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.home-focus-list strong,
+.home-focus-list span {
+    display: block;
+}
+
+.home-focus-list strong {
+    color: var(--primary);
+}
+
+.home-focus-list span,
+.home-note p {
+    margin-top: 6px;
+    color: var(--secondary);
+    line-height: 1.65;
+}
+
+.home-note {
+    padding: 20px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.home-note a {
+    margin-top: 10px;
+}
+
+.home-updates .post-entry {
+    margin-bottom: 14px;
+}
+
+@media (max-width: 860px) {
+    .home-hub,
+    .home-split,
+    .home-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-hub {
+        margin-top: 0;
+    }
+
+    .home-hub__content {
+        padding: 18px 0 0;
+    }
+
+    .home-hub h1 {
+        font-size: 2.6rem;
+    }
+
+    .home-hub__photo {
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-hub h1 {
+        font-size: 2.2rem;
+    }
+
+    .home-hub__summary {
+        font-size: 1rem;
+    }
+
+    .home-hub__actions a,
+    .home-note a {
+        width: 100%;
+    }
+
+    .home-section__header h2 {
+        font-size: 1.32rem;
+    }
+}
