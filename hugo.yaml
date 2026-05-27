@@ -22,6 +22,11 @@ params:
   ShowBreadCrumbs: true
   ShowToc: true
 
+  analytics:
+    plausible:
+      domain: "dudusoar.github.io"
+      script: "https://plausible.io/js/script.js"
+
   homeInfoParams:
     Title: "Hi, I'm Yuchen"
     Content: "I work on AI-driven optimization, LLM reasoning systems, and transportation simulation."
