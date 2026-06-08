@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Functional mapping between a database and a generative model</title>
+  <desc id="desc">Both traditional databases and generative models have storage, query, and output functions. A generative model encodes distributed features in its weights, scores relations using vector representations, and recombines relevant features into an output.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#34424D"/>
+    </marker>
+    <style>
+      text { font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif; letter-spacing: 0; }
+      .title { font-size: 34px; font-weight: 700; fill: #17212B; }
+      .subtitle { font-size: 17px; fill: #5B6670; }
+      .row-label { font-size: 21px; font-weight: 700; fill: #17212B; }
+      .stage { font-size: 15px; font-weight: 700; fill: #5B6670; }
+      .node-title { font-size: 21px; font-weight: 700; fill: #17212B; }
+      .node-copy { font-size: 16px; fill: #34424D; }
+      .small { font-size: 14px; fill: #5B6670; }
+      .arrow-label { font-size: 14px; font-weight: 600; fill: #5B6670; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="#FFFFFF"/>
+  <text x="70" y="65" class="title">Generative models retain three basic database functions</text>
+  <text x="70" y="96" class="subtitle">But they encode distributed features, and their outputs are not simple record retrieval.</text>
+
+  <text x="315" y="145" text-anchor="middle" class="stage">Storage</text>
+  <text x="605" y="145" text-anchor="middle" class="stage">Query and matching</text>
+  <text x="920" y="145" text-anchor="middle" class="stage">Output</text>
+
+  <text x="70" y="223" class="row-label">Traditional database</text>
+
+  <rect x="230" y="175" width="220" height="120" rx="8" fill="#E4F0DD" stroke="#547A4B" stroke-width="2"/>
+  <text x="340" y="215" text-anchor="middle" class="node-title">Structured records</text>
+  <text x="340" y="246" text-anchor="middle" class="node-copy">Tables, documents, chunks</text>
+  <text x="340" y="271" text-anchor="middle" class="small">Existing combinations are stored</text>
+
+  <rect x="495" y="175" width="220" height="120" rx="8" fill="#F9E7AE" stroke="#A77917" stroke-width="2"/>
+  <text x="605" y="215" text-anchor="middle" class="node-title">Query + Index</text>
+  <text x="605" y="246" text-anchor="middle" class="node-copy">Match by fields or similarity</text>
+  <text x="605" y="271" text-anchor="middle" class="small">Find existing records</text>
+
+  <rect x="790" y="175" width="260" height="120" rx="8" fill="#DCECF3" stroke="#477C91" stroke-width="2"/>
+  <text x="920" y="215" text-anchor="middle" class="node-title">Return a match</text>
+  <text x="920" y="246" text-anchor="middle" class="node-copy">Retrieve an existing combination</text>
+  <text x="920" y="271" text-anchor="middle" class="small">The result already exists in storage</text>
+
+  <line x1="450" y1="235" x2="487" y2="235" stroke="#34424D" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="715" y1="235" x2="782" y2="235" stroke="#34424D" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <line x1="70" y1="340" x2="1130" y2="340" stroke="#D9DEE2" stroke-width="2"/>
+
+  <text x="70" y="432" class="row-label">Generative model</text>
+
+  <rect x="230" y="380" width="220" height="155" rx="8" fill="#E4F0DD" stroke="#547A4B" stroke-width="3"/>
+  <text x="340" y="422" text-anchor="middle" class="node-title">Model weights</text>
+  <text x="340" y="454" text-anchor="middle" class="node-copy">Distributed patterns</text>
+  <rect x="263" y="474" width="52" height="26" rx="4" fill="#BFD7B6"/>
+  <rect x="322" y="474" width="52" height="26" rx="4" fill="#C9DFC0"/>
+  <rect x="381" y="474" width="36" height="26" rx="4" fill="#AFCBA4"/>
+  <text x="340" y="522" text-anchor="middle" class="small">Across many parameters</text>
+
+  <rect x="495" y="380" width="220" height="155" rx="8" fill="#F9E7AE" stroke="#A77917" stroke-width="3"/>
+  <text x="605" y="422" text-anchor="middle" class="node-title">Vector query</text>
+  <text x="605" y="454" text-anchor="middle" class="node-copy">Prompt + current context</text>
+  <line x1="548" y1="485" x2="662" y2="485" stroke="#A77917" stroke-width="3"/>
+  <circle cx="564" cy="485" r="7" fill="#D26A4A"/>
+  <circle cx="605" cy="485" r="7" fill="#477C91"/>
+  <circle cx="647" cy="485" r="7" fill="#547A4B"/>
+  <text x="605" y="522" text-anchor="middle" class="small">Score relations in a shared space</text>
+
+  <rect x="790" y="380" width="260" height="155" rx="8" fill="#F3D8DD" stroke="#A95767" stroke-width="3"/>
+  <text x="920" y="422" text-anchor="middle" class="node-title">Generate an answer</text>
+  <text x="920" y="454" text-anchor="middle" class="node-copy">Select and recombine features</text>
+  <text x="920" y="487" text-anchor="middle" class="small">The output is not a verbatim record</text>
+  <rect x="835" y="503" width="170" height="6" rx="3" fill="#D998A5"/>
+  <rect x="835" y="516" width="118" height="6" rx="3" fill="#D998A5"/>
+
+  <line x1="450" y1="457" x2="487" y2="457" stroke="#34424D" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="715" y1="457" x2="782" y2="457" stroke="#34424D" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <line x1="340" y1="302" x2="340" y2="372" stroke="#88939B" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#arrow)"/>
+  <line x1="605" y1="302" x2="605" y2="372" stroke="#88939B" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#arrow)"/>
+  <line x1="920" y1="302" x2="920" y2="372" stroke="#88939B" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#arrow)"/>
+
+  <text x="340" y="331" text-anchor="middle" class="arrow-label">Same functional role</text>
+  <text x="605" y="331" text-anchor="middle" class="arrow-label">Same functional role</text>
+  <text x="920" y="331" text-anchor="middle" class="arrow-label">The key difference begins here</text>
+
+  <rect x="230" y="592" width="820" height="68" rx="8" fill="#F5F7F8" stroke="#C9D0D5" stroke-width="1.5"/>
+  <text x="640" y="621" text-anchor="middle" class="node-copy">The analogy explains storage, query, and output.</text>
+  <text x="640" y="646" text-anchor="middle" class="node-copy">Understanding generation also requires decomposition and recombination.</text>
+</svg>

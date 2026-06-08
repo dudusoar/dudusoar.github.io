@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Learnability begins with decomposition</title>
+  <desc id="desc">If a Tetris board is treated as one indivisible unit, a model can only memorize or retrieve whole boards. After decomposition into tetromino units, adjacency, rotation, and fit become learnable relations that support new combinations.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#34424D"/>
+    </marker>
+    <style>
+      text { font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif; letter-spacing: 0; }
+      .title { font-size: 34px; font-weight: 700; fill: #17212B; }
+      .subtitle { font-size: 17px; fill: #5B6670; }
+      .panel-title { font-size: 22px; font-weight: 700; fill: #17212B; }
+      .node-title { font-size: 18px; font-weight: 700; fill: #17212B; }
+      .copy { font-size: 15px; fill: #34424D; }
+      .small { font-size: 14px; fill: #5B6670; }
+      .tag { font-size: 13px; font-weight: 700; fill: #34424D; }
+      .result { font-size: 18px; font-weight: 700; fill: #17212B; }
+      .cell { stroke: #FFFFFF; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#FFFFFF"/>
+  <text x="60" y="62" class="title">Learning begins with decomposition</text>
+  <text x="60" y="94" class="subtitle">Relations become learnable only after operational units have been defined.</text>
+
+  <rect x="50" y="130" width="330" height="520" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
+  <text x="78" y="172" class="panel-title">1. Whole board = one unit</text>
+  <text x="78" y="200" class="small">The model receives one holistic ID.</text>
+
+  <rect x="129" y="228" width="172" height="220" rx="6" fill="#26343D" stroke="#17212B" stroke-width="3"/>
+  <rect x="139" y="238" width="38" height="38" class="cell" fill="#D96C4E"/>
+  <rect x="177" y="238" width="38" height="38" class="cell" fill="#D96C4E"/>
+  <rect x="215" y="238" width="38" height="38" class="cell" fill="#E6B64C"/>
+  <rect x="253" y="238" width="38" height="38" class="cell" fill="#E6B64C"/>
+  <rect x="139" y="276" width="38" height="38" class="cell" fill="#6E9B62"/>
+  <rect x="177" y="276" width="38" height="38" class="cell" fill="#D96C4E"/>
+  <rect x="215" y="276" width="38" height="38" class="cell" fill="#D96C4E"/>
+  <rect x="253" y="276" width="38" height="38" class="cell" fill="#E6B64C"/>
+  <rect x="139" y="314" width="38" height="38" class="cell" fill="#6E9B62"/>
+  <rect x="177" y="314" width="38" height="38" class="cell" fill="#6E9B62"/>
+  <rect x="215" y="314" width="38" height="38" class="cell" fill="#5F8DA3"/>
+  <rect x="253" y="314" width="38" height="38" class="cell" fill="#5F8DA3"/>
+  <rect x="139" y="352" width="38" height="38" class="cell" fill="#B37591"/>
+  <rect x="177" y="352" width="38" height="38" class="cell" fill="#6E9B62"/>
+  <rect x="215" y="352" width="38" height="38" class="cell" fill="#5F8DA3"/>
+  <rect x="253" y="352" width="38" height="38" class="cell" fill="#5F8DA3"/>
+  <rect x="139" y="390" width="38" height="48" class="cell" fill="#B37591"/>
+  <rect x="177" y="390" width="38" height="48" class="cell" fill="#B37591"/>
+  <rect x="215" y="390" width="38" height="48" class="cell" fill="#B37591"/>
+  <rect x="253" y="390" width="38" height="48" class="cell" fill="#7E6BA2"/>
+
+  <rect x="105" y="468" width="220" height="48" rx="6" fill="#EEF1F3" stroke="#9DA8B0"/>
+  <text x="215" y="498" text-anchor="middle" class="node-title">Whole-board unit</text>
+  <text x="215" y="548" text-anchor="middle" class="copy">Internal structure is encapsulated</text>
+  <text x="215" y="574" text-anchor="middle" class="small">No piece-to-piece relations to learn</text>
+  <rect x="91" y="601" width="248" height="32" rx="5" fill="#F7E3E6"/>
+  <text x="215" y="622" text-anchor="middle" class="tag">Memorize or retrieve whole boards</text>
+
+  <rect x="435" y="130" width="330" height="520" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
+  <text x="463" y="172" class="panel-title">2. Split into tetrominoes</text>
+  <text x="463" y="200" class="small">Each piece becomes indexable and scoreable.</text>
+
+  <g transform="translate(484 245)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <rect x="34" y="0" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <rect x="68" y="0" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <rect x="34" y="34" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <text x="51" y="93" text-anchor="middle" class="tag">T unit</text>
+  </g>
+  <g transform="translate(620 245)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <rect x="34" y="0" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <rect x="0" y="34" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <rect x="34" y="34" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <text x="34" y="93" text-anchor="middle" class="tag">O unit</text>
+  </g>
+  <g transform="translate(489 380)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <rect x="0" y="34" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <rect x="34" y="34" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <rect x="68" y="34" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <text x="51" y="93" text-anchor="middle" class="tag">L unit</text>
+  </g>
+  <g transform="translate(620 380)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#5F8DA3"/>
+    <rect x="0" y="34" width="34" height="34" class="cell" fill="#5F8DA3"/>
+    <rect x="0" y="68" width="34" height="34" class="cell" fill="#5F8DA3"/>
+    <rect x="0" y="102" width="34" height="34" class="cell" fill="#5F8DA3"/>
+    <text x="64" y="76" class="tag">I unit</text>
+  </g>
+
+  <line x1="505" y1="535" x2="686" y2="535" stroke="#A77917" stroke-width="2.5" stroke-dasharray="7 6"/>
+  <text x="596" y="566" text-anchor="middle" class="copy">Relations become learnable:</text>
+  <text x="596" y="592" text-anchor="middle" class="small">adjacency, rotation, fit, order</text>
+  <rect x="476" y="608" width="248" height="32" rx="5" fill="#FFF1C9"/>
+  <text x="600" y="629" text-anchor="middle" class="tag">Units define the model's degrees of freedom</text>
+
+  <rect x="820" y="130" width="330" height="520" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
+  <text x="848" y="172" class="panel-title">3. Learn and recombine</text>
+  <text x="848" y="200" class="small">The same units can form new structures.</text>
+
+  <rect x="850" y="230" width="78" height="34" rx="6" fill="#FFF1C9" stroke="#A77917"/>
+  <text x="889" y="252" text-anchor="middle" class="tag">Rotation</text>
+  <rect x="946" y="230" width="78" height="34" rx="6" fill="#E4F0DD" stroke="#547A4B"/>
+  <text x="985" y="252" text-anchor="middle" class="tag">Adjacency</text>
+  <rect x="1042" y="230" width="78" height="34" rx="6" fill="#DCECF3" stroke="#477C91"/>
+  <text x="1081" y="252" text-anchor="middle" class="tag">Fit</text>
+
+  <line x1="985" y1="274" x2="985" y2="302" stroke="#34424D" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="985" y="329" text-anchor="middle" class="tag">A complete board never seen before</text>
+
+  <g transform="translate(899 345)">
+    <rect x="0" y="0" width="172" height="148" rx="5" fill="#26343D" stroke="#17212B" stroke-width="2.5"/>
+
+    <rect x="10" y="10" width="32" height="32" class="cell" fill="#5F8DA3"/>
+    <rect x="10" y="42" width="32" height="32" class="cell" fill="#5F8DA3"/>
+    <rect x="10" y="74" width="32" height="32" class="cell" fill="#5F8DA3"/>
+    <rect x="10" y="106" width="32" height="32" class="cell" fill="#5F8DA3"/>
+
+    <rect x="74" y="10" width="32" height="32" class="cell" fill="#E6B64C"/>
+    <rect x="106" y="10" width="32" height="32" class="cell" fill="#E6B64C"/>
+    <rect x="74" y="42" width="32" height="32" class="cell" fill="#E6B64C"/>
+    <rect x="106" y="42" width="32" height="32" class="cell" fill="#E6B64C"/>
+
+    <rect x="42" y="74" width="32" height="32" class="cell" fill="#D96C4E"/>
+    <rect x="74" y="74" width="32" height="32" class="cell" fill="#D96C4E"/>
+    <rect x="106" y="74" width="32" height="32" class="cell" fill="#D96C4E"/>
+    <rect x="74" y="106" width="32" height="32" class="cell" fill="#D96C4E"/>
+  </g>
+
+  <rect x="859" y="520" width="252" height="60" rx="7" fill="#E4F0DD" stroke="#547A4B" stroke-width="2"/>
+  <text x="985" y="546" text-anchor="middle" class="node-title">Novel boards are possible</text>
+  <text x="985" y="568" text-anchor="middle" class="small">No stored board template needed</text>
+
+  <rect x="858" y="598" width="254" height="36" rx="6" fill="#EEF4EA"/>
+  <text x="985" y="622" text-anchor="middle" class="result">Decompose → Relate → Recombine</text>
+
+  <line x1="380" y1="390" x2="425" y2="390" stroke="#34424D" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="765" y1="390" x2="810" y2="390" stroke="#34424D" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="687" width="700" height="46" rx="7" fill="#F5F7F8" stroke="#C9D0D5"/>
+  <text x="600" y="716" text-anchor="middle" class="result">Without operational parts, there are no relations among parts to learn.</text>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Decomposition injects inductive bias</title>
+  <desc id="desc">The same grid world can be decomposed into whole boards, tetrominoes, or individual cells. Each unit freezes a different amount of internal structure and changes which outputs are easy, difficult, or unreachable.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#34424D"/>
+    </marker>
+    <style>
+      text { font-family: Inter, "Noto Sans SC", "PingFang SC", sans-serif; letter-spacing: 0; }
+      .title { font-size: 34px; font-weight: 700; fill: #17212B; }
+      .subtitle { font-size: 17px; fill: #5B6670; }
+      .panel-title { font-size: 21px; font-weight: 700; fill: #17212B; }
+      .node-title { font-size: 17px; font-weight: 700; fill: #17212B; }
+      .copy { font-size: 15px; fill: #34424D; }
+      .small { font-size: 14px; fill: #5B6670; }
+      .tag { font-size: 13px; font-weight: 700; fill: #34424D; }
+      .result { font-size: 17px; font-weight: 700; fill: #17212B; }
+      .cell { stroke: #FFFFFF; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#FFFFFF"/>
+  <text x="60" y="62" class="title">Choosing the unit means choosing the model's inductive bias</text>
+  <text x="60" y="94" class="subtitle">Structure below the unit is fixed; the model learns combinations above it.</text>
+
+  <rect x="45" y="132" width="350" height="530" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
+  <text x="72" y="173" class="panel-title">Coarse: whole board</text>
+  <text x="72" y="201" class="small">One board is one unit.</text>
+
+  <rect x="126" y="230" width="188" height="188" rx="6" fill="#26343D" stroke="#17212B" stroke-width="3"/>
+  <rect x="136" y="240" width="42" height="42" class="cell" fill="#D96C4E"/>
+  <rect x="178" y="240" width="42" height="42" class="cell" fill="#D96C4E"/>
+  <rect x="220" y="240" width="42" height="42" class="cell" fill="#E6B64C"/>
+  <rect x="262" y="240" width="42" height="42" class="cell" fill="#E6B64C"/>
+  <rect x="136" y="282" width="42" height="42" class="cell" fill="#6E9B62"/>
+  <rect x="178" y="282" width="42" height="42" class="cell" fill="#D96C4E"/>
+  <rect x="220" y="282" width="42" height="42" class="cell" fill="#D96C4E"/>
+  <rect x="262" y="282" width="42" height="42" class="cell" fill="#E6B64C"/>
+  <rect x="136" y="324" width="42" height="42" class="cell" fill="#6E9B62"/>
+  <rect x="178" y="324" width="42" height="42" class="cell" fill="#6E9B62"/>
+  <rect x="220" y="324" width="42" height="42" class="cell" fill="#5F8DA3"/>
+  <rect x="262" y="324" width="42" height="42" class="cell" fill="#5F8DA3"/>
+  <rect x="136" y="366" width="42" height="42" class="cell" fill="#B37591"/>
+  <rect x="178" y="366" width="42" height="42" class="cell" fill="#6E9B62"/>
+  <rect x="220" y="366" width="42" height="42" class="cell" fill="#5F8DA3"/>
+  <rect x="262" y="366" width="42" height="42" class="cell" fill="#5F8DA3"/>
+
+  <rect x="92" y="447" width="256" height="54" rx="6" fill="#EEF1F3" stroke="#9DA8B0"/>
+  <text x="220" y="480" text-anchor="middle" class="node-title">Inside the unit: everything is fixed</text>
+  <text x="220" y="535" text-anchor="middle" class="copy">Easiest output: a seen board</text>
+  <text x="220" y="561" text-anchor="middle" class="small">A new contour requires a new board unit</text>
+  <rect x="82" y="592" width="276" height="43" rx="6" fill="#F7E3E6"/>
+  <text x="220" y="619" text-anchor="middle" class="result">Bias: whole-template memory</text>
+
+  <rect x="425" y="132" width="350" height="530" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
+  <text x="452" y="173" class="panel-title">Medium: tetromino</text>
+  <text x="452" y="201" class="small">Four cells are bound into one unit.</text>
+
+  <g transform="translate(472 238)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <rect x="34" y="0" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <rect x="68" y="0" width="34" height="34" class="cell" fill="#D96C4E"/>
+    <rect x="34" y="34" width="34" height="34" class="cell" fill="#D96C4E"/>
+  </g>
+  <g transform="translate(607 238)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <rect x="34" y="0" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <rect x="0" y="34" width="34" height="34" class="cell" fill="#E6B64C"/>
+    <rect x="34" y="34" width="34" height="34" class="cell" fill="#E6B64C"/>
+  </g>
+  <g transform="translate(506 334)">
+    <rect x="0" y="0" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <rect x="0" y="34" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <rect x="34" y="34" width="34" height="34" class="cell" fill="#6E9B62"/>
+    <rect x="68" y="34" width="34" height="34" class="cell" fill="#6E9B62"/>
+  </g>
+  <path d="M643 350 L691 350 L691 398 L643 398 Z" fill="none" stroke="#A95767" stroke-width="3" stroke-dasharray="7 5"/>
+  <line x1="650" y1="357" x2="684" y2="391" stroke="#A95767" stroke-width="3"/>
+  <line x1="684" y1="357" x2="650" y2="391" stroke="#A95767" stroke-width="3"/>
+  <text x="667" y="425" text-anchor="middle" class="tag">A single-cell edit is unavailable</text>
+
+  <rect x="468" y="447" width="264" height="54" rx="6" fill="#FFF1C9" stroke="#A77917"/>
+  <text x="600" y="480" text-anchor="middle" class="node-title">Inside the unit: four-cell shape fixed</text>
+  <text x="600" y="535" text-anchor="middle" class="copy">Easiest output: structures tiled by pieces</text>
+  <text x="600" y="561" text-anchor="middle" class="small">Rotation, adjacency, and fit become learnable</text>
+  <rect x="462" y="592" width="276" height="43" rx="6" fill="#FFF1C9"/>
+  <text x="600" y="619" text-anchor="middle" class="result">Bias: block-wise composition</text>
+
+  <rect x="805" y="132" width="350" height="530" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
+  <text x="832" y="173" class="panel-title">Fine: single cells</text>
+  <text x="832" y="201" class="small">Every cell is an independent unit.</text>
+
+  <g transform="translate(848 275)">
+    <rect x="0" y="0" width="54" height="54" rx="4" fill="#D96C4E" stroke="#FFFFFF" stroke-width="3"/>
+    <rect x="70" y="0" width="54" height="54" rx="4" fill="#E6B64C" stroke="#FFFFFF" stroke-width="3"/>
+    <rect x="140" y="0" width="54" height="54" rx="4" fill="#6E9B62" stroke="#FFFFFF" stroke-width="3"/>
+    <rect x="210" y="0" width="54" height="54" rx="4" fill="#5F8DA3" stroke="#FFFFFF" stroke-width="3"/>
+  </g>
+  <text x="980" y="365" text-anchor="middle" class="tag">Each cell can be selected and combined independently</text>
+
+  <rect x="848" y="447" width="264" height="54" rx="6" fill="#E4F0DD" stroke="#547A4B"/>
+  <text x="980" y="480" text-anchor="middle" class="node-title">Inside the unit: one indivisible cell</text>
+  <text x="980" y="535" text-anchor="middle" class="copy">Easiest output: arbitrary fine contours</text>
+  <text x="980" y="561" text-anchor="middle" class="small">Cost: longer sequences and more relations</text>
+  <rect x="842" y="592" width="276" height="43" rx="6" fill="#EEF4EA"/>
+  <text x="980" y="619" text-anchor="middle" class="result">Bias: fine-grained composition</text>
+
+  <line x1="395" y1="385" x2="415" y2="385" stroke="#34424D" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="775" y1="385" x2="795" y2="385" stroke="#34424D" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <rect x="172" y="690" width="856" height="44" rx="7" fill="#F5F7F8" stroke="#C9D0D5"/>
+  <text x="600" y="718" text-anchor="middle" class="result">Decomposition defines local validity, compositional boundaries, and reachable outputs.</text>
+</svg>
