@@ -93,7 +93,7 @@
   <text x="596" y="566" text-anchor="middle" class="copy">Relations become learnable:</text>
   <text x="596" y="592" text-anchor="middle" class="small">adjacency, rotation, fit, order</text>
   <rect x="476" y="608" width="248" height="32" rx="5" fill="#FFF1C9"/>
-  <text x="600" y="629" text-anchor="middle" class="tag">Units define the model's degrees of freedom</text>
+  <text x="600" y="629" text-anchor="middle" class="tag">Units define degrees of freedom</text>
 
   <rect x="820" y="130" width="330" height="520" rx="8" fill="#FAFBFB" stroke="#C9D0D5" stroke-width="2"/>
   <text x="848" y="172" class="panel-title">3. Learn and recombine</text>

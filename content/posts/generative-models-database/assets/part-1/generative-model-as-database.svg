@@ -26,7 +26,7 @@
   <text x="605" y="145" text-anchor="middle" class="stage">Query and matching</text>
   <text x="920" y="145" text-anchor="middle" class="stage">Output</text>
 
-  <text x="70" y="223" class="row-label">Traditional database</text>
+  <text x="205" y="223" text-anchor="end" class="row-label">Traditional database</text>
 
   <rect x="230" y="175" width="220" height="120" rx="8" fill="#E4F0DD" stroke="#547A4B" stroke-width="2"/>
   <text x="340" y="215" text-anchor="middle" class="node-title">Structured records</text>
@@ -48,7 +48,7 @@
 
   <line x1="70" y1="340" x2="1130" y2="340" stroke="#D9DEE2" stroke-width="2"/>
 
-  <text x="70" y="432" class="row-label">Generative model</text>
+  <text x="205" y="432" text-anchor="end" class="row-label">Generative model</text>
 
   <rect x="230" y="380" width="220" height="155" rx="8" fill="#E4F0DD" stroke="#547A4B" stroke-width="3"/>
   <text x="340" y="422" text-anchor="middle" class="node-title">Model weights</text>
