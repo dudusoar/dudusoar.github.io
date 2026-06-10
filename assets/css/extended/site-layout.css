@@ -14,6 +14,32 @@
     margin-inline: auto;
 }
 
+.list .post-entry .entry-cover {
+    max-height: clamp(170px, 22vw, 240px);
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.list .post-entry .entry-cover img {
+    width: 100%;
+    height: clamp(170px, 22vw, 240px);
+    object-fit: cover;
+    object-position: center;
+}
+
+.post-single > .entry-cover img[src*="delivery-replay.gif"] {
+    width: 100%;
+    height: clamp(240px, 42vw, 380px);
+    object-fit: cover;
+    object-position: center;
+}
+
+.post-content img[src*="delivery-replay.gif"] {
+    width: auto;
+    max-height: min(560px, 80vh);
+    margin-inline: auto;
+}
+
 @media (max-width: 760px) {
     .main {
         max-width: 100%;
