@@ -9,10 +9,11 @@ author: "Yuchen Du"
 description: "A research simulator for studying how pedestrian-aware sidewalk conditions affect delivery robot routing, dispatch, replay, and validation."
 summary: "A sidewalk delivery robot simulator that connects OpenStreetMap walk graphs, pedestrian-aware routing costs, dynamic request release, solver-visible snapshots, and replayable visualization artifacts."
 cover:
-  image: "cover.png"
+  image: "delivery-replay.gif"
   relative: true
-  alt: "Sidewalk network and pedestrian density overview for the sdr-sidewalk-sim showcase"
-images: ["cover.png", "route-changes.png", "plan-revision.png", "delivery-replay.gif"]
+  responsiveImages: false
+  alt: "Animated delivery replay for the sdr-sidewalk-sim showcase"
+images: ["delivery-replay.gif", "cover.png", "route-changes.png", "plan-revision.png"]
 showToc: true
 ShowShareButtons: false
 ---

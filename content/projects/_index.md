@@ -5,5 +5,3 @@ title: 'Projects'
 description: 'Selected research and engineering projects in optimization, simulation, and AI systems.'
 ShowShareButtons: false
 ---
-
-Selected research and engineering projects that connect optimization, simulation, and AI systems.
