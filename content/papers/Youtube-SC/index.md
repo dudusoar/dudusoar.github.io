@@ -5,7 +5,7 @@ draft: false
 slug: "youtube-sc"
 aliases: ["/projects/youtube-sc/", "/publications/youtube-sc/"]
 tags: ["paper","published","social perception", "sidewalk delivery robots", "sentiment analysis", "NLP", "machine learning","topic modeling"]
-categories: ["Research", "Publications"]
+categories: ["Research", "Papers"]
 author: "Yuchen Du"
 description: "A data-driven study leveraging YouTube comments to uncover public perceptions, safety concerns, and social acceptance of sidewalk delivery robots."
 summary: "Analyzing 5,000+ YouTube comments using sentiment analysis and topic modeling to understand public perceptions of sidewalk delivery robots."

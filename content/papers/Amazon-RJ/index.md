@@ -4,9 +4,9 @@ date: 2026-02-26T20:00:00-05:00
 lastmod: 2026-05-21
 draft: false
 slug: "amazon-rj"
-aliases: ["/projects/amazon-rj/"]
+aliases: ["/projects/amazon-rj/", "/publications/amazon-rj/"]
 tags: ["paper","preprint","LLM","graph reasoning","e-commerce","knowledge graph","appeal adjudication","arXiv"]
-categories: ["Research", "Publications"]
+categories: ["Research", "Papers"]
 author: "Yuchen Du"
 description: "A conflict-aware graph reasoning framework that learns from human correction signals in hierarchical review workflows to automate e-commerce seller appeal adjudication."
 summary: "When a second-tier reviewer overturns a first-tier decision, that correction encodes exactly why the initial judgment failed. We build a graph reasoning system that learns from these signals and achieves 96.3% alignment with human experts in production."

@@ -5,7 +5,7 @@ draft: false
 slug: "sdr-two-stage"
 aliases: ["/projects/sdr-two-stage/", "/publications/sdr-two-stage/"]
 tags: ["paper","published","sidewalk delivery robots","stochastic optimization","routing","battery swapping","urban logistics"]
-categories: ["Research", "Publications"]
+categories: ["Research", "Papers"]
 author: "Yuchen Du"
 description: "A two-stage stochastic optimization framework for fleet and battery sizing of sidewalk delivery robots under uncertain demand."
 summary: "How many delivery robots and batteries do you actually need when demand is uncertain? This study proposes a scalable two-stage optimization framework combining routing heuristics and analytical approximations."

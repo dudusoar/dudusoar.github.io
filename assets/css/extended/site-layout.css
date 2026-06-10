@@ -1,0 +1,21 @@
+:root {
+    --site-wide-width: 1120px;
+    --site-reading-width: 880px;
+    --nav-width: var(--site-wide-width);
+    --main-width: var(--site-wide-width);
+}
+
+.main {
+    max-width: min(calc(var(--site-wide-width) + var(--gap) * 2), calc(100vw - 48px));
+}
+
+.post-single {
+    max-width: var(--site-reading-width);
+    margin-inline: auto;
+}
+
+@media (max-width: 760px) {
+    .main {
+        max-width: 100%;
+    }
+}
