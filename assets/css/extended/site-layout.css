@@ -15,27 +15,29 @@
 }
 
 .list .post-entry .entry-cover {
-    max-height: clamp(170px, 22vw, 240px);
-    overflow: hidden;
-    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
 }
 
 .list .post-entry .entry-cover img {
-    width: 100%;
-    height: clamp(170px, 22vw, 240px);
-    object-fit: cover;
-    object-position: center;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: clamp(170px, 22vw, 240px);
 }
 
 .post-single > .entry-cover img[src*="delivery-replay.gif"] {
-    width: 100%;
-    height: clamp(240px, 42vw, 380px);
-    object-fit: cover;
-    object-position: center;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: clamp(240px, 42vw, 380px);
+    margin-inline: auto;
 }
 
 .post-content img[src*="delivery-replay.gif"] {
     width: auto;
+    max-width: 100%;
+    height: auto;
     max-height: min(560px, 80vh);
     margin-inline: auto;
 }
