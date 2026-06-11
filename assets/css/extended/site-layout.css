@@ -14,16 +14,12 @@
     margin-inline: auto;
 }
 
-.list .post-entry .entry-cover {
-    display: flex;
-    justify-content: center;
-}
-
-.list .post-entry .entry-cover img {
+.list .post-entry .entry-cover img[src*="delivery-replay.gif"] {
     width: auto;
     max-width: 100%;
     height: auto;
     max-height: clamp(170px, 22vw, 240px);
+    margin-inline: auto;
 }
 
 .post-single > .entry-cover img[src*="delivery-replay.gif"] {
