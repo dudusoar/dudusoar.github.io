@@ -2,12 +2,16 @@
 title: "Share Only the Modules Whose Meaning Survives a Method Change"
 date: 2026-07-17
 draft: false
+weight: 9
+series: ["Building Auditable LLM Systems"]
 description: "Code should be shared across LLM methods only when its meaning, lifecycle, failure handling, and tests remain unchanged."
 tags: ["LLM systems", "software architecture", "research engineering", "modularity"]
 categories: ["technical"]
 showToc: true
 math: false
 ---
+
+> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 9 of 11
 
 Several LLM methods can share infrastructure, but only components whose meaning, timing, and tests remain unchanged should be shared.
 
