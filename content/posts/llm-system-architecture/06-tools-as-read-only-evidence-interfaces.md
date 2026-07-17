@@ -2,12 +2,16 @@
 title: "LLM Tools Should Be Read-Only Interfaces to Facts and Evidence"
 date: 2026-07-17
 draft: false
+weight: 6
+series: ["Building Auditable LLM Systems"]
 description: "Tools should expose structured facts, deterministic calculations, and bounded evidence without making decisions on the model's behalf."
 tags: ["LLM systems", "tool use", "evidence", "agent architecture"]
 categories: ["technical"]
 showToc: true
 math: false
 ---
+
+> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 6 of 11
 
 In an LLM–algorithm system, a tool group should be a read-only interface to environment state, algorithm outputs, and mechanism evidence.
 

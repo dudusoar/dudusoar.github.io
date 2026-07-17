@@ -2,12 +2,16 @@
 title: "An LLM System Should Separate Schemas, Prompts, Tools, Workflows, and Memory"
 date: 2026-07-17
 draft: false
+weight: 1
+series: ["Building Auditable LLM Systems"]
 description: "Why an LLM decision system should be built as five separable layers rather than one increasingly large prompt."
 tags: ["LLM systems", "agent architecture", "workflows", "auditability"]
 categories: ["technical"]
 showToc: true
 math: false
 ---
+
+> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 1 of 11
 
 A small LLM prototype can often be built with one prompt. Put the current state, a few examples, the output format, and an instruction into a single block of text, then see whether the model returns a plausible answer.
 

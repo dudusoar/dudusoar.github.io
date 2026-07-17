@@ -2,12 +2,16 @@
 title: "Fix Fact Ownership and Evidence Provenance in LLM Systems"
 date: 2026-07-17
 draft: false
+weight: 8
+series: ["Building Auditable LLM Systems"]
 description: "Every fact, interpretation, proposal, and outcome in an LLM system needs a clear owner and a traceable evidence lineage."
 tags: ["LLM systems", "provenance", "auditability", "memory"]
 categories: ["technical"]
 showToc: true
 math: false
 ---
+
+> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 8 of 11
 
 Every fact, interpretation, and decision in an LLM system needs a clear owner.
 

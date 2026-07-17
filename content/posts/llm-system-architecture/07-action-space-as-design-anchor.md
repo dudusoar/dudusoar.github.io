@@ -2,12 +2,16 @@
 title: "The Action Space Is the Anchor of LLM System Design"
 date: 2026-07-17
 draft: false
+weight: 7
+series: ["Building Auditable LLM Systems"]
 description: "Define what an LLM is allowed to change before designing its schemas, prompts, tools, workflows, and memory."
 tags: ["LLM systems", "action spaces", "guardrails", "feedback"]
 categories: ["technical"]
 showToc: true
 math: false
 ---
+
+> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 7 of 11
 
 The action space is the anchor of an LLM decision system.
 
