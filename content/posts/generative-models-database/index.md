@@ -4,7 +4,7 @@ date: 2026-06-08
 draft: false
 tags: ["generative-models", "representation-learning", "inductive-bias", "first-principles"]
 categories: ["AI"]
-aliases: ["/posts/generative-models-database/"]
+aliases: ["/tutorials/generative-models-database/"]
 description: "Why knowledge must be decomposed into operational units before a generative model can learn relations and create new structures."
 summary: "The database analogy explains where learned knowledge lives, but not how it is organized. A Tetris example shows how decomposition defines a model's degrees of freedom, inductive bias, and reachable outputs."
 showToc: true
