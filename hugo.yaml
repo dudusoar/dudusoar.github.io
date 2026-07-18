@@ -12,7 +12,7 @@ markup:
 
 params:
   env: production
-  description: "Yuchen Du's research papers, projects, writing, tutorials, and photo field notes."
+  description: "Yuchen Du's research papers, projects, technical writing, and photo field notes."
   author: "Yuchen Du"
   defaultTheme: auto
   ShowReadingTime: true
@@ -44,10 +44,6 @@ menu:
       name: Blog
       url: /posts/
       weight: 10
-    - identifier: tutorials
-      name: Tutorials
-      url: /tutorials/
-      weight: 20
     - identifier: papers
       name: Papers
       url: /papers/

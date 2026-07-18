@@ -1,4 +1,4 @@
 ---
 title: "Blog"
-description: "Technical essays on LLM systems, optimization, simulation, and research engineering."
+description: "Technical essays, first-principles explainers, and series on LLM systems, optimization, simulation, and research engineering."
 ---
