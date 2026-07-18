@@ -58,6 +58,14 @@ $$
 
 In the river analogy, $\Delta_k$ identifies which side of the river you are on. The energy $h_k$ records only the squared distance to the river.
 
+For example, if the river is at $100$ meters, positions $120$ and $80$ produce errors $20$ and $-20$. Their directions differ, but both have the same energy:
+
+$$
+h_k=20^2=(-20)^2=400\text{ m}^2.
+$$
+
+That is exactly what a convergence proof needs when direction keeps changing: one nonnegative measure of how far the route remains from the target.
+
 ## Step 1: Expand the Energy Increment
 
 By definition:

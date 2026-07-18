@@ -33,7 +33,7 @@ w_{k+1}-w_k =
 \alpha_k(w^*+\eta_k-w_k).
 $$
 
-The second option is the distance from the current estimate to the true target:
+The second option is the displacement from the current position to the true target:
 
 $$
 \Delta_k=w_k-w^*.
@@ -68,7 +68,7 @@ $$
 \lim_{k\to\infty}w_k=w^*.
 $$
 
-Only $\Delta_k$ answers whether the iteration learned the true value.
+Only $\Delta_k$ answers whether the traveler reached the true riverbank.
 
 In the river analogy, $w_{k+1}-w_k$ measures how far you moved during one step. A zero movement does not mean you reached the river. The vector $\Delta_k=w_k-w^*$ measures your actual displacement from the river, so $\Delta_k=0$ means you arrived.
 
@@ -88,5 +88,21 @@ Its two terms have distinct roles:
 - $\alpha_k\eta_k$ injects part of the current observation error into the new position.
 
 This is the central tension in stochastic approximation. Every update can reduce the old error, but every noisy observation can also add a new one.
+
+## A Concrete Failure of the First Error
+
+Suppose the true riverbank is at $w^*=100$ meters, but the step size becomes nearly zero while the traveler remains at $w_k=70$ meters. Then:
+
+$$
+w_{k+1}-w_k\approx0,
+$$
+
+even though:
+
+$$
+\Delta_k=w_k-w^*=-30\text{ meters}.
+$$
+
+The route has almost stopped changing, but the traveler is still 30 meters from the river. Convergence must therefore track $\Delta_k$, not the latest movement.
 
 The distinction between the two candidate errors is ultimately the distinction between velocity and position: stopping is not the same as arriving.

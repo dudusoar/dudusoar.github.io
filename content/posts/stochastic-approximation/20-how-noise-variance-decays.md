@@ -222,3 +222,5 @@ Noise is controlled at two stages:
 - later contraction factors determine how quickly the system forgets it.
 
 Small entry weights alone are not the whole story. Continued correction is also needed to erase old errors.
+
+In the basic river update with $\alpha_k=\beta_k=1/k$, the current position is an average of the inferred river locations. If one judgment error has variance $100\text{ m}^2$, then after $k$ independent judgments the position variance is $100/k$. No individual sound becomes more accurate; its share of the accumulated route becomes smaller.

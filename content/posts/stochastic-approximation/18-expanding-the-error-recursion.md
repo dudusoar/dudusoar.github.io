@@ -63,6 +63,19 @@ $$
 
 Continuing this substitution yields the general formula above.
 
+## Put Numbers into the Expansion
+
+Suppose the river is at $100$ meters and the traveler starts at $0$, so $\Delta_0=-100$. Let the first two judgment errors be $\eta_0=20$ and $\eta_1=-10$. Then:
+
+$$
+\Delta_2=
+(1-\alpha_1)(1-\alpha_0)(-100)
++(1-\alpha_1)\beta_0(20)
++\beta_1(-10).
+$$
+
+The three terms have distinct meanings: residual starting error, the surviving effect of the first mistaken judgment, and the newly injected second judgment error. The formula is bookkeeping for the route's entire causal history.
+
 ## The Residual Initial Error
 
 The term:

@@ -157,6 +157,14 @@ $$
 \beta_k=\alpha_k.
 $$
 
+For a concrete reading, suppose the traveler is $20$ meters east of the river, so $\Delta_k=20$. If $\alpha_k=0.1$, contraction alone reduces the old error to $18$ meters. If the current sound judgment has error $\eta_k=30$ meters and $\beta_k=0.02$, the new disturbance contributes another $0.6$ meter, giving:
+
+$$
+\Delta_{k+1}=0.9\cdot20+0.02\cdot30=18.6.
+$$
+
+The two coefficients make the analytical separation visible: $\alpha_k$ controls how old route error is contracted, while $\beta_k$ controls how strongly the new judgment error enters. In the basic river update they happen to be the same coefficient.
+
 ## A Working Statement of the Theorem
 
 Let:

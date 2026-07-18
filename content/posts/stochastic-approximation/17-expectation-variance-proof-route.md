@@ -38,6 +38,8 @@ For this route, treat $\alpha_k$ and $\beta_k$ as given coefficients and use ord
 
 The full Dvoretzky theorem allows more general random coefficients and history dependence. That extra generality is why the pathwise energy argument remains necessary.
 
+One useful mental experiment is to simulate $10{,}000$ travelers from the same starting point, each hearing an independent sequence of distorted sounds. At a fixed step $k$, $\mathbb{E}[\Delta_k]$ and $\operatorname{Var}(\Delta_k)$ summarize that cross-section of $10{,}000$ positions. They do not, by themselves, describe what happens forever along any one traveler's route.
+
 ## Step 1: Expand the Recursion
 
 Repeated substitution gives:

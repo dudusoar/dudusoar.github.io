@@ -91,6 +91,13 @@ It controls complete paths:
 
 In the forest, almost every individual journey eventually approaches the river and stays close.
 
+The contrast can be visualized with the same tolerance of one meter:
+
+- **Convergence in probability:** at step $10{,}000$, only a small proportion of $10{,}000$ independently simulated travelers are more than one meter from the river.
+- **Almost-sure convergence:** for one fixed traveler followed indefinitely, there is almost surely some finite time after which that traveler remains within one meter of the river.
+
+The first compares many journeys at one late time. The second makes a claim about the infinite tail of each journey.
+
 ## Why the Difference Matters
 
 Expectation and variance can show:

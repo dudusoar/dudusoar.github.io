@@ -23,9 +23,11 @@ $$
 
 The assumptions describe the errors in the inferred target.
 
+They are convenient sufficient conditions for the simple derivations in this series, not the only possible assumptions under which stochastic approximation can work.
+
 ## Four Assumptions, Four Jobs
 
-- **Zero mean:** errors do not systematically push the estimate in one direction.
+- **Zero mean:** errors do not systematically push the route in one direction.
 - **Finite variance:** errors have a controllable scale.
 - **Independence:** repeated observations do not merely repeat the same hidden error.
 - **Identical distribution:** old and new observations have comparable statistical quality.
@@ -141,6 +143,17 @@ $$
 makes recent observations increasingly noisy. Because recent observations receive the largest weights, the geometric decay of older weights may not control the growing variance.
 
 The reverse change also causes friction: if early observations are noisy and later observations are clean, preserving too much old history slows adaptation.
+
+## How the Forest Can Violate Each Assumption
+
+The assumptions become easier to interpret when each failure has a physical meaning:
+
+- **Bias:** a valley echo makes every inferred river location about $20$ meters too far east. The traveler is then pulled toward $w^*+20$, not toward the riverbank.
+- **Unbounded variance:** nearby road noise is occasionally mistaken for running water, producing judgments that are kilometers away.
+- **Correlation:** the same crosswind distorts several consecutive judgments in the same direction, so their errors do not cancel like independent draws.
+- **Changing distribution:** the traveler moves from a dense valley into an open clearing, where sound propagates differently. The noise law now depends on the current terrain and position.
+
+The last case does not make analysis impossible, but it calls for a conditional noise model rather than a single fixed IID distribution.
 
 ## What the Assumptions Mean
 
