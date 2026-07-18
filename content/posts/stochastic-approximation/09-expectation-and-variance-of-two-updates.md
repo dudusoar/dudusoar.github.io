@@ -62,8 +62,7 @@ $$
 and in general:
 
 $$
-w_k
-=
+w_k =
 \sum_{i=0}^{k-1}\alpha(1-\alpha)^i
 (w^*+\eta_{k-1-i})
 +
@@ -92,16 +91,14 @@ $$
 The geometric sum is:
 
 $$
-\sum_{i=0}^{k-1}\alpha(1-\alpha)^i
-=
+\sum_{i=0}^{k-1}\alpha(1-\alpha)^i =
 1-(1-\alpha)^k.
 $$
 
 If $\mathbb{E}[\eta_k]=0$, then:
 
 $$
-\mathbb{E}[w_k]
-=
+\mathbb{E}[w_k] =
 \left[1-(1-\alpha)^k\right]w^*
 +
 (1-\alpha)^kw_0
@@ -119,8 +116,7 @@ $$
 If the disturbances are independent:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \sum_{i=0}^{k-1}
 \alpha^2(1-\alpha)^{2i}
 \operatorname{Var}(\eta_{k-1-i}).
@@ -137,8 +133,7 @@ $$
 Then:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \alpha^2\sigma^2
 \sum_{i=0}^{k-1}(1-\alpha)^{2i}.
 $$
@@ -146,8 +141,7 @@ $$
 Evaluating the geometric sum:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \alpha^2\sigma^2
 \frac{1-(1-\alpha)^{2k}}
 {1-(1-\alpha)^2}.
@@ -156,8 +150,7 @@ $$
 Hence:
 
 $$
-\lim_{k\to\infty}\operatorname{Var}(w_k)
-=
+\lim_{k\to\infty}\operatorname{Var}(w_k) =
 \frac{\alpha\sigma^2}{2-\alpha}.
 $$
 

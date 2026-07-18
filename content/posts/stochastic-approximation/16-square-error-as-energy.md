@@ -26,8 +26,7 @@ This transforms an error that can change direction into a nonnegative energy. Th
 Start from:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k.
@@ -88,10 +87,8 @@ $$
 Since:
 
 $$
-(1-\alpha_k)^2-1
-=
--2\alpha_k+\alpha_k^2
-=
+(1-\alpha_k)^2-1 =
+-2\alpha_k+\alpha_k^2 =
 -\alpha_k(2-\alpha_k),
 $$
 
@@ -209,8 +206,7 @@ Then:
 $$
 \sum_k\alpha_kh_k
 \ge
-\frac{L}{2}\sum_k\alpha_k
-=
+\frac{L}{2}\sum_k\alpha_k =
 \infty,
 $$
 

@@ -46,8 +46,7 @@ The same coefficient that moves the estimate also scales the disturbance. If $\a
 The error recursion makes both effects explicit:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 \underbrace{(1-\alpha_k)}_{\text{old-error coefficient}}\Delta_k
 +
 \underbrace{\alpha_k}_{\text{noise coefficient}}\eta_k.
@@ -70,10 +69,8 @@ From contraction alone, $\alpha_k=1.5$ is possible. The old error is multiplied 
 For deterministic $\alpha_k$:
 
 $$
-\operatorname{Var}(\alpha_k\eta_k)
-=
-\alpha_k^2\operatorname{Var}(\eta_k)
-=
+\operatorname{Var}(\alpha_k\eta_k) =
+\alpha_k^2\operatorname{Var}(\eta_k) =
 \alpha_k^2\sigma^2.
 $$
 

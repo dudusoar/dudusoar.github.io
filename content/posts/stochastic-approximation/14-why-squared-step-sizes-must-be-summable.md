@@ -26,8 +26,7 @@ The constant-step calculation gives an intuitive variance comparison, but a real
 Start with:
 
 $$
-w_{k+1}
-=
+w_{k+1} =
 (1-\alpha_k)w_k
 +
 \alpha_k(w^*+\eta_k).
@@ -64,8 +63,7 @@ $$
 is the remaining weight on the initial estimate, and:
 
 $$
-B_{k,i}
-=
+B_{k,i} =
 \alpha_i
 \prod_{j=i+1}^{k-1}(1-\alpha_j)
 $$
@@ -79,8 +77,7 @@ The $i$th observation enters with strength $\alpha_i$ and is then attenuated by 
 Under zero-mean noise:
 
 $$
-\mathbb{E}[w_k]
-=
+\mathbb{E}[w_k] =
 A_kw_0
 +
 \sum_{i=0}^{k-1}B_{k,i}w^*.
@@ -95,16 +92,14 @@ $$
 Therefore:
 
 $$
-\mathbb{E}[w_k]
-=
+\mathbb{E}[w_k] =
 w^*+A_k(w_0-w^*).
 $$
 
 To make the initial error vanish, we need:
 
 $$
-A_k
-=
+A_k =
 \prod_{j=0}^{k-1}(1-\alpha_j)
 \longrightarrow0.
 $$
@@ -112,8 +107,7 @@ $$
 For small $\alpha_j$:
 
 $$
-\log A_k
-=
+\log A_k =
 \sum_{j=0}^{k-1}\log(1-\alpha_j)
 \approx
 -\sum_{j=0}^{k-1}\alpha_j.
@@ -138,16 +132,14 @@ $$
 is random. If the disturbances are independent with variance $\sigma^2$:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \sigma^2\sum_{i=0}^{k-1}B_{k,i}^2.
 $$
 
 Substituting the weights:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \sigma^2
 \sum_{i=0}^{k-1}
 \alpha_i^2
@@ -169,8 +161,7 @@ $$
 is at most one, so:
 
 $$
-B_{k,i}^2
-=
+B_{k,i}^2 =
 \alpha_i^2
 \prod_{j=i+1}^{k-1}(1-\alpha_j)^2
 \le\alpha_i^2.

@@ -16,8 +16,7 @@ math: true
 The recursion:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k
@@ -26,8 +25,7 @@ $$
 can be expanded into two sources of error:
 
 $$
-\Delta_k
-=
+\Delta_k =
 \left[
 \prod_{i=0}^{k-1}(1-\alpha_i)
 \right]\Delta_0

@@ -30,8 +30,7 @@ $$
 The difference $w^*-w_k$ points from the current estimate to the target. As a vector, it separates into direction and distance:
 
 $$
-w^*-w_k
-=
+w^*-w_k =
 \frac{w^*-w_k}{\|w^*-w_k\|}
 \cdot
 \|w^*-w_k\|.

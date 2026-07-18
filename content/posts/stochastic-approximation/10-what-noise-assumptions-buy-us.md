@@ -43,10 +43,8 @@ $$
 then:
 
 $$
-\mathbb{E}[\text{target}_k]
-=
-\mathbb{E}[w^*+\eta_k]
-=
+\mathbb{E}[\text{target}_k] =
+\mathbb{E}[w^*+\eta_k] =
 w^*.
 $$
 
@@ -57,8 +55,7 @@ The observation is unbiased. If instead every target has mean $w^*+b$, the itera
 The constant-step analysis gives:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \sum_{i=0}^{k-1}
 \alpha^2(1-\alpha)^{2i}
 \operatorname{Var}(\eta_{k-1-i}).
@@ -100,10 +97,8 @@ $$
 Its expectation is zero, but:
 
 $$
-\operatorname{Var}(\eta_k)
-=
-\mathbb{E}[\eta_k^2]
-=
+\operatorname{Var}(\eta_k) =
+\mathbb{E}[\eta_k^2] =
 k^2
 \longrightarrow\infty.
 $$
@@ -115,11 +110,10 @@ Most observations are harmless, but occasional extreme errors grow with time. Pr
 For a weighted sum:
 
 $$
-\operatorname{Var}\left(\sum_i a_i\eta_i\right)
-=
+\operatorname{Var}\left(\sum_i a_i\eta_i\right) =
 \sum_i a_i^2\operatorname{Var}(\eta_i)
 +
-2\sum_{i<j}a_ia_j\operatorname{Cov}(\eta_i,\eta_j).
+2\sum_{i\lt j}a_ia_j\operatorname{Cov}(\eta_i,\eta_j).
 $$
 
 Independence makes the covariance terms zero. Without it, positively correlated errors can move together and defeat averaging.
@@ -127,8 +121,7 @@ Independence makes the covariance terms zero. Without it, positively correlated 
 In the extreme case $\eta_k=\eta_0$ for every $k$, all observations repeat the same error. Then:
 
 $$
-\operatorname{Var}(w_k)
-=
+\operatorname{Var}(w_k) =
 \left[1-(1-\alpha)^k\right]^2\sigma^2
 \longrightarrow\sigma^2.
 $$

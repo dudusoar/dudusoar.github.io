@@ -28,10 +28,8 @@ we need a quantity that tells us whether the iteration is approaching the true t
 The first option is the change between consecutive iterates:
 
 $$
-w_{k+1}-w_k
-=
-\alpha_k(\text{target}_k-w_k)
-=
+w_{k+1}-w_k =
+\alpha_k(\text{target}_k-w_k) =
 \alpha_k(w^*+\eta_k-w_k).
 $$
 

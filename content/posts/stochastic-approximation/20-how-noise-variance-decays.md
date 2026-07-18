@@ -30,8 +30,7 @@ $$
 where:
 
 $$
-A_k
-=
+A_k =
 \left[
 \prod_{i=0}^{k-1}(1-\alpha_i)
 \right]\Delta_0
@@ -40,16 +39,14 @@ $$
 is deterministic, and:
 
 $$
-B_k
-=
+B_k =
 \sum_{j=0}^{k-1}w_{j,k}\eta_j,
 $$
 
 with:
 
 $$
-w_{j,k}
-=
+w_{j,k} =
 \left[
 \prod_{i=j+1}^{k-1}(1-\alpha_i)
 \right]\beta_j.
@@ -64,8 +61,7 @@ $$
 If the noise terms are independent or at least uncorrelated:
 
 $$
-\operatorname{Var}(\Delta_k)
-=
+\operatorname{Var}(\Delta_k) =
 \sum_{j=0}^{k-1}
 w_{j,k}^2\operatorname{Var}(\eta_j).
 $$
@@ -80,8 +76,7 @@ Then:
 
 $$
 \boxed{
-\operatorname{Var}(\Delta_k)
-=
+\operatorname{Var}(\Delta_k) =
 \sum_{j=0}^{k-1}
 \beta_j^2\sigma_j^2
 \prod_{i=j+1}^{k-1}(1-\alpha_i)^2
@@ -184,8 +179,7 @@ $$
 Then:
 
 $$
-\sum_k\beta_k^2
-=
+\sum_k\beta_k^2 =
 \sum_k\frac{1}{k^2}
 <\infty.
 $$

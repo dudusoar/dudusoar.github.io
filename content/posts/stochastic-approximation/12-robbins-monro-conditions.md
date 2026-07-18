@@ -28,8 +28,7 @@ The first condition keeps the total corrective force large enough to remove old 
 The error recursion is:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \alpha_k\eta_k.

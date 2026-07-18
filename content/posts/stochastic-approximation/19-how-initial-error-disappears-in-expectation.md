@@ -16,8 +16,7 @@ math: true
 The explicit error formula is:
 
 $$
-\Delta_k
-=
+\Delta_k =
 \left[
 \prod_{i=0}^{k-1}(1-\alpha_i)
 \right]\Delta_0
@@ -59,8 +58,7 @@ $$
 Therefore:
 
 $$
-\mathbb{E}[\Delta_k]
-=
+\mathbb{E}[\Delta_k] =
 \left[
 \prod_{i=0}^{k-1}(1-\alpha_i)
 \right]\Delta_0.
