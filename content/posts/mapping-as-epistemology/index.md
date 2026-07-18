@@ -4,8 +4,8 @@ date: 2026-03-30
 draft: false
 tags: ["epistemology", "knowledge", "philosophy", "research"]
 categories: ["Essay"]
-description: "Why two people can look at the same facts and reach completely different conclusions — and what that tells us about the nature of knowledge."
-summary: "Knowledge is more than a collection of facts. It includes mapping rules that turn observations into conclusions. Understanding means building better maps, knowing their limits, and separating representation-dependent conclusions from stable structure."
+description: "Why the same event becomes different internal inputs — and why scientific theories are maps of observable phenomena rather than reality itself."
+summary: "People do not simply apply different rules to identical inputs. Attention, experience, and representation shape the inputs themselves. Science makes maps shared and testable, but those maps remain bounded by instruments, scale, and domain."
 showToc: true
 ---
 
@@ -13,7 +13,17 @@ Why do two people, looking at the same facts, reach completely different conclus
 
 The difference need not come from dishonesty or intelligence. Two people may read the same data and the same report, or live through the same event, yet form completely different interpretations.
 
-The real question isn't what they saw — it's what rules they used to process what they saw.
+Even the phrase “the same facts” hides a complication. The external event may be the same, but by the time it becomes an input to thought, it has already passed through a personal map.
+
+## The Same Event Does Not Produce the Same Input
+
+Attention determines which details enter the foreground. Memory supplies analogies and expectations. Language provides the categories used to describe what happened. Goals and values determine which differences matter. Each person filters and organizes the event before deliberate reasoning begins.
+
+A personal map is built from accumulated experience. It does not wait until after observation to interpret a finished input; it helps produce the input itself. It selects, compresses, labels, and orders what happened into a representation the person can use.
+
+Two people can therefore face the same event without reasoning from the same internal representation. Their disagreement may come from different inference rules, but it may begin earlier: in what each person noticed, omitted, grouped together, or treated as meaningful.
+
+This is why arguing only about the final conclusion rarely resolves a deep disagreement. The conclusions sit at the end of two different processing pipelines.
 
 ## Knowledge Is More Than Facts
 
@@ -25,13 +35,15 @@ A doctor's knowledge is not simply that a drug treats a disease. It includes the
 
 For this essay, we can treat useful knowledge as a mapping from an input space to an output space. To understand such a mapping is to know its domain, the conclusions it can produce, and the rule that connects the two.
 
-## Understanding the World Means Building Maps
+In human reasoning, that map includes more than the final inference rule. It also includes the representation that turns a complex event into an input the rule can process.
 
-If knowledge is a mapping rule, then what does it mean to understand the world?
+## Science Builds Shared Maps
 
-It means continually building and revising maps.
+Personal maps are often implicit and private. Scientific knowledge applies the same map-building process at a collective level.
 
-Human understanding of the world is rarely direct. We cannot perceive atoms with unaided senses, see gravity itself, or observe another person's inner state. Instead, we establish relationships among observable phenomena and use them to infer what we cannot see.
+Science does not remove the gap between reality and understanding. It makes the map explicit enough for other people to inspect, reproduce, test, and revise. Researchers specify what they observed, how they represented it, and which rules connect those observations to explanations or predictions.
+
+Human access to the world remains indirect. We cannot perceive atoms with unaided senses, see gravity itself, or observe another person's inner state. We establish relationships among observable phenomena and use them to infer what we cannot see.
 
 Newton expressed gravity as an operational relationship: given the masses of two objects and the distance between them, calculate the force they exert on each other. That map made planetary orbits, projectile trajectories, and falling objects predictable within its domain.
 
@@ -47,7 +59,21 @@ Is light a wave or a particle? A wave description predicts interference and diff
 
 This does not make truth relative. Different maps represent the same phenomenon at different resolutions and expose different layers of structure.
 
-This distinction has a practical implication. When two people understand the same event differently, asking only “who is right?” keeps the argument at the output layer. A better question is which map each person is using, which assumptions it contains, and where its domain ends.
+The coexistence of several useful maps leads to a deeper point. Even a rigorous, predictive map is not the phenomenon itself.
+
+## Science Is a Map, Not the Territory
+
+A scientific theory is a structured way to organize observations and connect conditions to predictions. It can be extraordinarily accurate without being identical to the world it describes.
+
+Observation is itself bounded by instruments, resolution, and scale. An instrument determines which variables can enter the record. Its resolution determines which differences remain visible and which collapse together. The chosen scale determines which patterns appear stable enough to model.
+
+Classical mechanics, for example, represents a system through quantities such as position, momentum, and force, then uses differential equations to map a present state to a future trajectory. At ordinary scales and speeds, this map predicts the world extremely well.
+
+At quantum scales, the classical map no longer accounts for all observed behavior. A quantum state cannot generally be replaced by a definite classical trajectory with the same predictive meaning. Observed quantum phenomena required a different state representation and a different mapping between state and outcome.
+
+Calculus itself did not fail. Differential calculus formalizes local change and local linear approximation, and quantum mechanics also relies on differential equations. What failed was the classical mapping between those mathematical variables and the physical world at that scale. The mathematical tool survived; its interpretation and role inside the map changed.
+
+This does not make science arbitrary. Scientific maps are constrained by reproducible observations, predictive performance, and comparison with alternatives. But success within a domain does not turn a map into the territory. It tells us how well a particular system of observation and reasoning lets us understand and act on phenomena at a particular scale.
 
 ## Maps Lose Information
 
@@ -93,8 +119,8 @@ This gives us a useful criterion. If a conclusion disappears under a valid chang
 
 Back to the original question: why do two people, looking at the same facts, reach different conclusions?
 
-Because they're using different mappings to process the same input. Their disagreement isn't about the facts — it's about the rules.
+Because the same event entered two different personal maps. Each person attended to, represented, and processed it differently.
 
-This is not a discouraging conclusion. When a disagreement seems irreconcilable, ask which maps we are each using, where their limits lie, and whether another map can accommodate what both sides observe.
+This is not a discouraging conclusion. When a disagreement seems irreconcilable, ask what each person observed, how each represented it, which rules each applied, and where those maps stop working.
 
-Understanding the world is the ongoing process of building, testing, and replacing maps. There is no final map, only better approximations.
+Science is the disciplined version of the same process: build maps, expose their assumptions, test them against observations, and replace them when their domain ends. There is no final map, only better approximations.

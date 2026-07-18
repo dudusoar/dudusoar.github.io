@@ -1,26 +1,24 @@
 ---
-title: "If a Generative Model Is a Database, What Does It Store?"
+title: "A Generative Model Is Like a Database: Decomposition Defines Its Schema"
 date: 2026-06-08
 draft: false
 tags: ["generative-models", "representation-learning", "inductive-bias", "first-principles"]
 categories: ["AI"]
 aliases: ["/tutorials/generative-models-database/"]
-description: "Why a representation must expose operational units before a generative model can learn relations and create new structures."
-summary: "The database analogy explains where learned knowledge lives, but not how it is organized. A Tetris example shows how decomposition defines a model's degrees of freedom, inductive bias, and reachable outputs."
+description: "A database analogy reveals why generative models need data decomposition and why unit granularity determines what they can learn and generate."
+summary: "Treating a generative model like a database reveals its missing schema: data must be decomposed into operational units. A Tetris example shows how decomposition granularity sets the model's inductive bias, compositional freedom, and cost."
 showToc: true
 ---
 
-We often say that a generative model learns knowledge from data and stores that knowledge in its weights.
+A useful way to reason about a generative model is to compare it with a database.
 
-But this statement answers only one question: **where is the knowledge stored?**
+At first, the analogy appears to be about storage: a database stores data, while a model stores learned structure in its weights. But storage is the least interesting part of the comparison.
 
-Saying that knowledge is stored in weights is like saying that a database is stored on a hard drive. It identifies the storage medium, but tells us nothing about the schema. What are the records? What are the fields? What can be indexed, compared, and recombined?
+A database also needs a schema. It must define what counts as a record, which fields belong together, and what can be indexed, compared, or recombined. A generative model faces an analogous requirement: its representation must decompose data into operational units before the model can learn relations among them.
 
-For a generative model, the deeper question is:
+> **Data decomposition is the operational schema of generation.**
 
-> In what units must knowledge be organized so that the model can recombine it into something new?
-
-The question becomes clearer through a database analogy.
+Once we view decomposition as schema design, unit granularity becomes the central question. It determines which structures are fixed in advance, which relations the model must learn, and how freely the model can generate new combinations.
 
 ## Why a Generative Model Resembles a Database
 
@@ -44,17 +42,17 @@ From this perspective, a generative model resembles a database. Its weights coll
 
 This analogy is functional, not literal. A model does not contain a clean table of sentences, images, or facts that we can inspect row by row. Its knowledge is distributed across parameters.
 
-The value of the analogy is its starting point: generation requires an internal structure that can be queried.
+The database comparison now exposes a question that weights alone cannot answer:
 
-But the analogy immediately leaves a gap.
-
-A database can tell us exactly what counts as a record and which fields are indexed. When we say that a model "stores knowledge in its weights," what counts as a record inside the model?
+> What are the model's operational units, and at what granularity are they defined?
 
 Is it a sentence? A word? A character? A whole image? A patch? A pixel?
 
-Without an answer, "storing knowledge" remains too vague to explain learning or generation.
+Without an answer, the model's functional schema remains unspecified. We know where the learned structure resides, but not which elements the model can independently compare, relate, or recombine.
 
-## Storage Requires Decomposition
+## Decomposition Defines the Generative Schema
+
+In a database, the schema determines which objects can be indexed and which relations a query can express. In a generative model, decomposition plays an analogous role: it determines which parts can be manipulated independently and which relations are exposed to learning.
 
 Matching and recombination require objects that can be matched and recombined.
 
@@ -174,16 +172,14 @@ Images can similarly be represented as whole images, patches, or pixels.
 
 Representation therefore determines the scale at which the model can observe, learn, and recombine the world.
 
-## So What Does a Generative Model Store?
+## Decomposition Defines the Generative Interface
 
-We can now give a more precise answer to the opening question.
+The database analogy can now be stated more precisely. The weights provide persistent storage, the input acts as a query, and the model produces an output from learned relations. Decomposition supplies the schema that makes those operations possible.
 
-If a generative model is viewed as a database, it does not store a set of finished knowledge objects that can be read out directly. A more useful abstraction is:
+The model does not contain finished knowledge objects that can be read out like database rows. A more useful abstraction is:
 
-> The model's weights encode patterns over decomposed units and their relations, allowing those structures to be reorganized under new conditions.
+> The weights encode patterns over units and their relations; the representation determines which units and relations can exist.
 
-The weights tell us where the learned structure resides. Decomposition determines what can be stored, matched, and recombined.
+Unit granularity fixes the boundary between structure supplied by the representation and structure learned by the model. Coarser units package more structure in advance and reduce recombination. Finer units expose more freedom but create longer sequences and more relations to learn.
 
-One is the storage medium. The other defines the operational interface of knowledge.
-
-The central design choice is not how finely data can be decomposed, but which structures the representation fixes and which relations it leaves the model to learn. That choice sets the model's inductive bias, compositional freedom, and computational cost before training begins.
+Decomposition is therefore not a preprocessing detail. It defines the model's inductive bias, compositional freedom, reachable outputs, and computational cost before training begins.
