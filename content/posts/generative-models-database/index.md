@@ -5,16 +5,14 @@ draft: false
 tags: ["generative-models", "representation-learning", "inductive-bias", "first-principles"]
 categories: ["AI"]
 aliases: ["/tutorials/generative-models-database/"]
-description: "Why knowledge must be decomposed into operational units before a generative model can learn relations and create new structures."
+description: "Why a representation must expose operational units before a generative model can learn relations and create new structures."
 summary: "The database analogy explains where learned knowledge lives, but not how it is organized. A Tetris example shows how decomposition defines a model's degrees of freedom, inductive bias, and reachable outputs."
 showToc: true
 ---
 
-Series: *A First-Principles View of Generative Models* · Part 1
-
 We often say that a generative model learns knowledge from data and stores that knowledge in its weights.
 
-But this statement answers only a shallow question: **where is the knowledge stored?**
+But this statement answers only one question: **where is the knowledge stored?**
 
 Saying that knowledge is stored in weights is like saying that a database is stored on a hard drive. It identifies the storage medium, but tells us nothing about the schema. What are the records? What are the fields? What can be indexed, compared, and recombined?
 
@@ -22,11 +20,11 @@ For a generative model, the deeper question is:
 
 > In what units must knowledge be organized so that the model can recombine it into something new?
 
-To reach that question, we can begin with a useful analogy.
+The question becomes clearer through a database analogy.
 
 ## Why a Generative Model Resembles a Database
 
-If we temporarily ignore architecture-specific details, many generative systems can be described through three functions:
+At a functional level, many generative systems can be described through three operations:
 
 1. **Storage:** training creates a persistent internal knowledge structure.
 2. **Query:** the current input is transformed into a representation that can interact with that structure.
@@ -38,7 +36,7 @@ A database has a similar functional organization:
 2. A user submits a query, and the system applies a matching rule.
 3. The system returns the corresponding result.
 
-From this perspective, a generative model behaves like a database. Its weights collectively provide long-term storage. A prompt acts like a query. The model uses its learned internal structure to produce an output.
+From this perspective, a generative model resembles a database. Its weights collectively provide long-term storage. In a conditional system, the prompt acts like a query. The model uses its learned internal structure to produce an output.
 
 ![Functional mapping between a database and a generative model](assets/part-1/generative-model-as-database.svg)
 
@@ -46,7 +44,7 @@ From this perspective, a generative model behaves like a database. Its weights c
 
 This analogy is functional, not literal. A model does not contain a clean table of sentences, images, or facts that we can inspect row by row. Its knowledge is distributed across parameters.
 
-Still, the analogy gives us an important starting point: generation cannot happen from nothing. The model must first acquire an internal structure that can be queried.
+The value of the analogy is its starting point: generation requires an internal structure that can be queried.
 
 But the analogy immediately leaves a gap.
 
@@ -60,17 +58,17 @@ Without an answer, "storing knowledge" remains too vague to explain learning or 
 
 Matching and recombination require objects that can be matched and recombined.
 
-If an entire sample is treated as one indivisible object, a model can recognize that object, assign it a score, or retrieve it later. But the sample has no independently manipulable parts. There are therefore no internal relations among parts for the model to learn.
+If a representation treats an entire sample as one indivisible object, a model can recognize that object, assign it a score, or retrieve it later. But the representation exposes no independently manipulable parts and therefore no explicit relations among parts to learn.
 
 This gives us a more fundamental principle:
 
-> Knowledge must be decomposable into parts before a model can learn how those parts form a whole.
+> A representation must expose reusable parts before a model can learn how those parts form a whole.
 
-Call each part a **unit**. A unit is not merely a chunk created during preprocessing. It defines the smallest object the model can independently select, score, or combine.
+Call each part a **unit**. A unit is more than a chunk created during preprocessing. It is the smallest object that the representation lets the model independently select, score, or combine.
 
 In that sense:
 
-> **A unit is a degree of freedom.**
+> **Within this abstraction, each independently manipulable unit creates a degree of freedom.**
 
 Tetris provides a clean visual model of this idea.
 
@@ -86,16 +84,16 @@ Whole board B
 Whole board C
 ```
 
-The model could learn which complete boards occur frequently. It could select among them. But it would not see the pieces, positions, or shapes inside a board. It could not directly learn:
+The model could learn which complete boards occur frequently and select among them. But the representation would not expose the pieces, positions, or shapes inside a board. The model could not directly learn:
 
 - how a piece can rotate;
 - how two pieces can touch;
 - which shape fits a particular gap;
 - how the same pieces can form different boards.
 
-To produce a board it had never seen, the model would need that entire board to exist as a new unit.
+Under this representation, producing an unseen board would require that entire board to exist as a new unit.
 
-The problem is not insufficient model capacity. The problem is that we gave the model no parts it could operate on.
+The limiting factor is not model capacity. The representation exposes no parts that the model can operate on.
 
 Now change the representation. Instead of treating the whole board as one unit, decompose it into tetrominoes.
 
@@ -107,9 +105,9 @@ Once the pieces become independent units, new learnable relations appear: rotati
 
 This is the direct connection between decomposability and learnability:
 
-> Without operational parts, there are no relations among parts to learn. Without such relations, generation collapses toward memorizing and moving complete samples.
+> Without operational parts, a representation exposes no relations among parts to learn. Generation then collapses toward memorizing and selecting complete samples.
 
-The ability to generate a new structure does not appear only after preprocessing is finished. It is already constrained when we decide what counts as a unit.
+Representation constrains generative freedom before training begins because the unit choice defines what the model can manipulate independently.
 
 ## Why Finer Is Not Always Better
 
@@ -121,7 +119,7 @@ The same Tetris world can be represented at several resolutions.
 
 ### Whole Board as the Unit
 
-All internal structure is fixed. The model is naturally good at remembering and reusing complete templates, but it has little freedom to modify them locally.
+All internal structure is fixed. The representation favors remembering and reusing complete templates but offers little freedom to modify them locally.
 
 The sequence is short: one board requires one unit. The cost is an enormous unit vocabulary and very limited recombination.
 
@@ -156,15 +154,15 @@ This is how decomposition injects **inductive bias** before training even begins
 
 ## Tokens, Patches, and Pixels Answer the Same Question
 
-Tokenization, patching, and pixel-level representation are often introduced as preprocessing choices, as if their purpose were merely to convert raw data into an acceptable input format.
+Tokenization, patching, and pixel-level representation are often introduced as preprocessing choices that convert raw data into an acceptable input format.
 
 The Tetris example reveals a deeper role:
 
-> They decide what the model should treat as the basic building blocks of the world.
+> They define the basic building blocks that the representation exposes to the model.
 
 Text can be decomposed into sentences, words, subwords, or characters.
 
-- With sentences as units, the system moves toward reusing complete expressions.
+- With sentences as units, the representation favors reusing complete expressions.
 - With words as units, internal spelling is fixed and word-to-word relations dominate.
 - With characters as units, the system can construct words freely, but must learn spelling and morphology across longer sequences.
 
@@ -174,7 +172,7 @@ Images can similarly be represented as whole images, patches, or pixels.
 - Patch-level units emphasize relations among regions.
 - Pixel-level units offer the finest local control, but create far longer and more complex relation structures.
 
-The representation does more than format the input. It determines the scale at which the model can observe, learn, and recombine the world.
+Representation therefore determines the scale at which the model can observe, learn, and recombine the world.
 
 ## So What Does a Generative Model Store?
 
@@ -184,12 +182,8 @@ If a generative model is viewed as a database, it does not store a set of finish
 
 > The model's weights encode patterns over decomposed units and their relations, allowing those structures to be reorganized under new conditions.
 
-The weights tell us where the learned structure resides. Decomposition tells us what can be stored, matched, and recombined.
+The weights tell us where the learned structure resides. Decomposition determines what can be stored, matched, and recombined.
 
 One is the storage medium. The other defines the operational interface of knowledge.
 
-This leads to the next question:
-
-> If decomposition changes compositional freedom, sequence length, semantic density, and computational cost, is there an optimal way to decompose knowledge?
-
-That is where the next article begins.
+The central design choice is not how finely data can be decomposed, but which structures the representation fixes and which relations it leaves the model to learn. That choice sets the model's inductive bias, compositional freedom, and computational cost before training begins.
