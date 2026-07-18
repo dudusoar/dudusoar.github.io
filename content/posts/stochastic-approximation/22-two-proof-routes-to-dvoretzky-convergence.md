@@ -56,6 +56,8 @@ bounds disturbance strength.
 
 Both routes study why repeated noisy movement can still approach the river. They differ in whether they inspect the distribution at time $k$ or the evolution of a complete path.
 
+Imagine running the same forest simulation for $1{,}000$ travelers. The expectation–variance route takes a horizontal slice across all $1{,}000$ routes at step $k$ and asks whether their positions concentrate near the river. The energy route selects one traveler, follows the entire route through time, and controls whether its squared distance can keep reviving forever.
+
 ## Route 1: Expectation and Variance
 
 The first route:

@@ -15,7 +15,7 @@ math: true
 
 Suppose the statistical properties of $\eta_k$ are known, while the behavior of $w_k$ is what we want to determine. We can use the former to compare two update mechanisms: $\alpha=1$ and $0<\alpha<1$.
 
-The goal is an estimate centered on $w^*$ whose individual realizations do not fluctuate excessively.
+The goal is a traveler whose position is centered on the true riverbank $w^*$ and whose individual journeys do not fluctuate excessively.
 
 ## The Memoryless Update
 
@@ -69,7 +69,7 @@ w_k =
 (1-\alpha)^kw_0.
 $$
 
-The state is an exponentially weighted average of past observations. Recent observations receive larger weights; older observations remain, but their influence decays.
+The current position is an exponentially weighted combination of past inferred river locations. Recent judgments receive larger weights; older judgments remain, but their influence decays.
 
 ## Compute the Expectation
 
@@ -161,7 +161,22 @@ $$
 | $\alpha=1$ | $w^*$ | $\sigma^2$ |
 | $0<\alpha<1$ | $w^*$ | approaches $\frac{\alpha\sigma^2}{2-\alpha}$ |
 
-Both estimates are unbiased under zero-mean noise. The history-preserving update can reduce variance by preventing one observation from determining the entire state.
+Both positions are centered on the riverbank in expectation under zero-mean noise. The history-preserving update can reduce variance by preventing one judgment from determining the entire route.
+
+## A Numerical Comparison
+
+Suppose the standard deviation of one sound-based location error is $20$ meters, so $\sigma^2=400\text{ m}^2$.
+
+- With full replacement, the traveler's position has standard deviation $20$ meters at every step.
+- With $\alpha=0.2$, the limiting variance is
+
+  $$
+  \frac{0.2}{2-0.2}\cdot 400 \approx 44.44\text{ m}^2,
+  $$
+
+  which corresponds to a standard deviation of about $6.67$ meters.
+
+Constant smoothing therefore keeps the traveler much closer to the river on average, but it does not make the remaining fluctuation disappear.
 
 In the river analogy, $\alpha<1$ does not make one sound more accurate. It makes one mistaken sound responsible for only part of the route.
 

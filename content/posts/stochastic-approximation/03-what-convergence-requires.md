@@ -47,7 +47,7 @@ $$
 
 Each controls a different failure mode:
 
-- $0\le\alpha_k<1$ keeps each update between the old estimate and the noisy target.
+- $0\le\alpha_k<1$ keeps each new position between the current position and the noisy target.
 - $\sum_k\alpha_k=\infty$ prevents the process from losing the ability to correct its initial error.
 - $\sum_k\alpha_k^2<\infty$ limits the cumulative strength with which noise enters the system.
 
@@ -67,12 +67,14 @@ Zero mean rules out a persistent directional bias. Finite variance makes the dis
 
 In the forest analogy:
 
-- The step-size conditions determine how much of each estimated direction you follow.
+- The step-size conditions determine how much of the vector toward each inferred river location you follow.
 - $\sum_k\alpha_k=\infty$ prevents you from becoming so cautious that you stop before reaching the river.
 - $\sum_k\alpha_k^2<\infty$ prevents every new echo from entering your route with a large weight forever.
-- $\mathbb{E}[\eta_k]=0$ says the sound does not systematically mislead you in one direction.
-- $\operatorname{Var}(\eta_k)<\infty$ says the location errors do not repeatedly take arbitrarily extreme values.
+- $\mathbb{E}[\eta_k]=0$ says the inferred river location is not systematically shifted to the same side.
+- $\operatorname{Var}(\eta_k)<\infty$ says those location errors remain on an averagable scale.
 
 These assumptions are not decorative restrictions chosen to make a proof convenient. They define an executable strategy for learning from a hidden target: control how much you move, and require the observation errors to be unbiased and bounded in strength.
+
+They also define the analogy's boundary. The riverbank is fixed, and each sound is abstracted into a location judgment. Obstacles, non-straight movement, and persistent echo bias would require a richer model.
 
 The rest of the series explains why each condition is needed.

@@ -90,6 +90,16 @@ $$
 \sum_k\frac{1}{k^2}<\infty.
 $$
 
+## Three Schedules, Three Outcomes
+
+The two conditions distinguish schedules that can look similarly small at a glance:
+
+- $\alpha_k=1/(k+1)$: the total correction remains infinite while the squared step sizes are summable. This is the canonical balance.
+- $\alpha_k=1/(k+1)^2$: the total correction is finite, so the traveler can stop making meaningful progress before reaching the river.
+- $\alpha_k=1/\sqrt{k+1}$: the total correction is infinite, but the squared step sizes behave like the harmonic series. Repeated sound errors continue to inject too much cumulative noise.
+
+It is therefore not enough that $\alpha_k\to0$. The rate of decay determines whether the route preserves enough correction while suppressing enough noise.
+
 The step size must decay slowly enough to sustain learning and quickly enough to suppress noise.
 
 In the forest, you must always retain the ability to adjust your route, but later in the journey you cannot allow one sound to trigger a large move. Otherwise you either stop in the forest or keep wandering with every echo.

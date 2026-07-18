@@ -38,13 +38,13 @@ $$
 \alpha_k\|\text{target}_k-w_k\|.
 $$
 
-We control $\alpha_k$, but we do not directly control the remaining target distance. The desired result is:
+We control $\alpha_k$, but we do not directly control the remaining true error. The desired result is:
 
 $$
-\|\text{target}_k-w_k\|\to0.
+\|w_k-w^*\|\to0.
 $$
 
-That quantity should disappear because the iteration has reached the target, not because $\alpha_k$ has become too small to move.
+That quantity should disappear because the traveler has reached the riverbank, not because $\alpha_k$ has become too small to move.
 
 The condition:
 
@@ -69,3 +69,25 @@ In the forest, this is what happens when your willingness to follow each new sou
 The condition does not say every path must travel an infinite geometric distance. It says the algorithm cannot lose its capacity for cumulative correction before the error itself gives a reason to stop.
 
 When no reliable stopping signal or global target information is available, continued corrective capacity is the safer mechanism.
+
+## A Route That Freezes Halfway
+
+Suppose the riverbank is at $100$ meters, the traveler starts at $0$, there is no noise, and
+
+$$
+\alpha_k=\frac{1}{(k+2)^2}.
+$$
+
+Then the error obeys:
+
+$$
+w_{k+1}-w^*=(1-\alpha_k)(w_k-w^*).
+$$
+
+For this schedule:
+
+$$
+\prod_{k=0}^{\infty}\left(1-\frac{1}{(k+2)^2}\right)=\frac{1}{2}.
+$$
+
+Half of the initial $100$-meter error therefore survives forever: the traveler approaches $50$ meters rather than the river at $100$ meters. The steps become tiny, but that apparent stability is simply premature freezing.

@@ -86,6 +86,16 @@ $$
 
 In the river analogy, imagine repeating the journey many times under different wind and echo realizations. If the inferred target errors are unbiased, they cancel in the average. What remains is the influence of the starting position, and the infinite cumulative contraction removes it.
 
+For a concrete constant-step illustration, put the river at $100$ meters and start every traveler at $40$, so $\Delta_0=-60$. With $\alpha=0.2$ and unbiased judgment errors:
+
+$$
+\mathbb{E}[\Delta_{10}]
+=(1-0.2)^{10}(-60)
+\approx-6.44\text{ m}.
+$$
+
+Across repeated journeys, the average position is now only about $6.44$ meters short of the river. This cancellation is an ensemble statement: an individual traveler still hears a particular, non-canceling sequence of errors.
+
 This calculation gives the expectation-level meaning of:
 
 $$

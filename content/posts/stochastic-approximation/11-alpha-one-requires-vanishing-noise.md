@@ -4,7 +4,7 @@ date: 2026-07-17
 draft: false
 weight: 11
 hiddenInHomeList: true
-description: "If every update fully replaces the current estimate, convergence requires the observation error itself to disappear."
+description: "If every update fully replaces the current position, convergence requires the river-location judgment error itself to disappear."
 tags: ["stochastic approximation", "step size", "noise", "mechanism design"]
 categories: ["technical"]
 showToc: true
@@ -13,7 +13,13 @@ math: true
 
 > **Series:** [Stochastic Approximation from First Principles](/posts/stochastic-approximation/) · Part 11 of 22
 
-If $\alpha=1$, the update is:
+If $\alpha=1$, the traveler moves directly to the latest inferred location:
+
+$$
+w_{k+1}=\text{target}_k.
+$$
+
+The analyst can then substitute $\text{target}_k=w^*+\eta_k$:
 
 $$
 w_{k+1}=w^*+\eta_k.
@@ -25,11 +31,13 @@ $$
 \eta_k\to0.
 $$
 
-At the level of the simplified variance comparison, this requires:
+For mean-square convergence, this requires:
 
 $$
-\operatorname{Var}(\eta_k)\to0.
+\mathbb{E}[\eta_k^2]\to0.
 $$
+
+If the errors are mean zero, this reduces to $\operatorname{Var}(\eta_k)\to0$.
 
 By contrast, a history-preserving mechanism can work with persistent noise whose variance remains finite:
 
@@ -47,7 +55,9 @@ One design demands that noise disappear. The other permits noise to remain and l
 | Keep $\alpha=1$ | The noise must approach zero | Full replacement at every step | Strong environmental requirement |
 | Ideal limit | $\eta_k\equiv0$ | $\alpha=1$ | Noise-free abstraction |
 
-In the forest analogy, insisting on $\alpha=1$ means that every later sound must become almost perfectly accurate. Wind, leaves, and echoes would have to stop affecting the inferred location. A more realistic strategy accepts that errors will persist and reduces how strongly each one changes the route.
+In the forest analogy, insisting on $\alpha=1$ means that every later sound-based judgment must become almost perfectly accurate. Wind, leaves, and echoes would have to stop affecting the inferred location. A more realistic strategy accepts that errors will persist and reduces how strongly each one changes the route.
+
+Suppose the next judgment can still miss the river by $20$ meters no matter how many times the traveler has listened before. Another iteration does not make that raw judgment exact. With $\alpha=1$, the traveler simply jumps to the latest noisy location, so the position error remains as noisy as the judgment error.
 
 ## Control the Mechanism, Not the Environment
 

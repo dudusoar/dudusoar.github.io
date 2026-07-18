@@ -13,28 +13,51 @@
 <div class="post-content">{{ . }}</div>
 {{- end }}
 
+{{- $seriesPages := .RegularPages.ByWeight }}
+{{- $seriesGroups := .Params.series_groups }}
 <section class="blog-group" aria-labelledby="series-contents">
     <header class="blog-group__header">
         <p>Contents</p>
-        <h2 id="series-contents">All {{ len .RegularPages }} parts</h2>
+        <h2 id="series-contents">{{ if $seriesGroups }}Reading map{{ else }}All {{ len $seriesPages }} parts{{ end }}</h2>
     </header>
-    <div class="series-article-list">
-        {{- range .RegularPages.ByWeight }}
-        <article class="post-entry series-entry">
-            <span class="series-entry__part">Part {{ .Weight }}</span>
-            <header class="entry-header">
-                <h2 class="entry-hint-parent">{{ .Title }}</h2>
+    {{- if $seriesGroups }}
+    <nav class="series-topic-nav" aria-label="Series topics">
+        {{- range $groupIndex, $group := $seriesGroups }}
+        {{- $topicID := printf "series-topic-%d" (add $groupIndex 1) }}
+        <a class="series-topic-nav__item" href="#{{ $topicID }}">
+            <span>Parts {{ $group.start }}–{{ $group.end }}</span>
+            <strong>{{ $group.title }}</strong>
+        </a>
+        {{- end }}
+    </nav>
+    <div class="series-topic-list">
+        {{- range $groupIndex, $group := $seriesGroups }}
+        {{- $topicID := printf "series-topic-%d" (add $groupIndex 1) }}
+        {{- $groupPages := where $seriesPages "Weight" "ge" (int $group.start) }}
+        {{- $groupPages = where $groupPages "Weight" "le" (int $group.end) }}
+        <section class="series-topic" aria-labelledby="{{ $topicID }}">
+            <header class="series-topic__header">
+                <p>Parts {{ $group.start }}–{{ $group.end }}</p>
+                <h3 id="{{ $topicID }}">{{ $group.title }}</h3>
+                {{- with $group.description }}
+                <div>{{ . | markdownify }}</div>
+                {{- end }}
             </header>
-            <div class="entry-content">
-                <p>{{ .Description }}</p>
+            <div class="series-article-list">
+                {{- range $groupPages }}
+                {{- partial "series_entry.html" . }}
+                {{- end }}
             </div>
-            {{- if not (.Param "hideMeta") }}
-            <footer class="entry-footer">{{- partial "post_meta.html" . -}}</footer>
-            {{- end }}
-            <a class="entry-link" aria-label="Open Part {{ .Weight }}: {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
-        </article>
+        </section>
         {{- end }}
     </div>
+    {{- else }}
+    <div class="series-article-list">
+        {{- range $seriesPages }}
+        {{- partial "series_entry.html" . }}
+        {{- end }}
+    </div>
+    {{- end }}
 </section>
 
 {{- end }}

@@ -4,7 +4,7 @@ date: 2026-07-17
 draft: false
 weight: 8
 hiddenInHomeList: true
-description: "Discarding history is justified only when the current state is sufficient; a single noisy target is not."
+description: "An update can erase the previous iterate without becoming Markov; Markov sufficiency is a property of the chosen state."
 tags: ["stochastic approximation", "Markov property", "state", "noise"]
 categories: ["technical"]
 showToc: true
@@ -32,21 +32,24 @@ $$
 The update:
 
 - ignores the previous state $w_k$;
-- erases all earlier estimates;
+- gives the previous position zero weight in the new position;
 - depends only on the current noisy target.
 
 In the river analogy, you completely trust the latest sound and move directly to the location it suggests. The difficulty is that $\text{target}_k$ is not the river. It is an estimate contaminated by location error.
 
 ## Markov Means Sufficient, Not Merely Recent
 
-The Markov property says that the current state contains all information needed to describe the next transition. It assumes that the current state is sufficient.
+The Markov property says that, once the current state is given, the past adds no information needed to describe the next transition. This is a statement about whether the chosen state is sufficient. It is not a rule that says an algorithm should trust only its newest observation.
 
-A noisy target does not become sufficient simply because it is current. Discarding history in this setting creates three problems:
+The value of $\alpha$ and the Markov property therefore answer different questions:
 
-- one observation can dominate the estimate;
-- repeated observations cannot reveal a longer-term trend;
-- errors cannot be averaged across time.
+- $\alpha$ defines how the next position is computed.
+- Markov sufficiency defines what information the state must contain for the transition law.
 
-Markovian memorylessness is legitimate because the current state already contains the relevant past. The update with $\alpha=1$ is memoryless because it throws the past away even though the current observation is incomplete and noisy.
+## A Concrete Distinction
 
-The first is a property of a sufficient state representation. The second is information loss.
+Suppose the distribution of the next sound judgment depends only on the traveler's current position $w_k$. Given that position, two travelers who arrived there by different routes have the same next-step distribution. The position process can then be Markov for either $\alpha=1$ or $0<\alpha<1$.
+
+If wind direction or terrain history also affects the next judgment but is missing from the state, the current position alone may not be Markov. Setting $\alpha=1$ does not repair that missing information.
+
+The apparent similarity is only algebraic. At $\alpha=1$, the previous iterate receives zero weight. Markovianity is a probabilistic property of the state representation.

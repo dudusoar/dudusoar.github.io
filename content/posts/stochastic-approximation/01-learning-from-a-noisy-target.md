@@ -19,32 +19,11 @@ $$
 \text{New}=\text{Old}+\alpha(\text{Target}-\text{Old}).
 $$
 
-## Begin with a Visible Target
+Imagine searching for a river at night. Let $w_k$ denote your actual position after step $k$. The riverbank has a fixed true location $w^*$, but you cannot see or use it directly. You can only listen to the water and form a location judgment, $\text{target}_k$.
 
-Suppose the value we want is $w^*$. If we can observe it directly, a natural update is:
+![A traveler repeatedly follows noisy river-location judgments and converges toward the riverbank.](/images/stochastic-approximation-forest-river.png)
 
-$$
-w_{k+1}=w_k+\alpha(w^*-w_k).
-$$
-
-The difference $w^*-w_k$ points from the current estimate to the target. As a vector, it separates into direction and distance:
-
-$$
-w^*-w_k =
-\frac{w^*-w_k}{\|w^*-w_k\|}
-\cdot
-\|w^*-w_k\|.
-$$
-
-Imagine searching for a river at night. Here, $w_k$ is your current position and $w^*$ is the river's true location. If you can see the river, the update means:
-
-> Walk toward the river by an $\alpha$ fraction of the remaining distance.
-
-With $\alpha=1$, you go directly to the river. With $0<\alpha<1$, you cover only part of the distance.
-
-## Replace the Target with a Noisy Estimate
-
-In reality, you cannot see the river. You can only hear it. The sound is not the target; it is a signal from which you form an estimated river location, $\text{target}_k$.
+## The Actual Update Uses Only the Noisy Target
 
 Wind, leaves, echoes, and terrain can shift this estimate away from the true location:
 
@@ -58,37 +37,31 @@ $$
 \eta_k=\text{target}_k-w^*
 $$
 
-is the location error caused by the current observation.
+is the location error caused by the current judgment. This equation belongs to the analyst's view: the traveler observes $\text{target}_k$, not $w^*$ or $\eta_k$ separately.
 
-The update therefore becomes:
-
-$$
-w_{k+1}=w_k+\alpha(\text{target}_k-w_k).
-$$
-
-The difficult part is now visible: every step must use a target that may be wrong.
-
-## Let the Step Size Change
-
-You should not completely trust one noisy observation. The coefficient $\alpha$ can be read as:
-
-> The fraction of the estimated distance that you are willing to walk.
-
-With $\alpha=1$, you fully trust the latest estimate and move directly to $\text{target}_k$. With $0<\alpha<1$, you move only partway and retain some of your previous estimate.
-
-Stochastic approximation normally allows this fraction to change over time:
-
-$$
-\alpha\longrightarrow\alpha_k.
-$$
-
-The update becomes:
+The traveler can execute:
 
 $$
 w_{k+1}=w_k+\alpha_k(\text{target}_k-w_k).
 $$
 
-## Read the Update as a Weighted Average
+This update uses only the current position, the latest inferred river location, and the chosen movement fraction. The difficult part is now visible: every step must follow a target that may be wrong.
+
+## The Step Size Is a Movement Fraction
+
+You should not completely trust one sound-based judgment. The coefficient $\alpha_k$ is:
+
+> The fraction of the vector from your current position to the latest inferred river location that you actually walk.
+
+With $\alpha_k=1$, you move directly to $\text{target}_k$. With $0<\alpha_k<1$, you move only partway and leave room for later judgments to correct the route.
+
+Stochastic approximation allows this fraction to change over time:
+
+$$
+\alpha\longrightarrow\alpha_k.
+$$
+
+## Read the Update as a Weighted Position
 
 The same expression can be written as:
 
@@ -96,7 +69,17 @@ $$
 w_{k+1}=(1-\alpha_k)w_k+\alpha_k\text{target}_k.
 $$
 
-The new estimate is a weighted average of old information and the latest observation. The step size $\alpha_k$ determines how much influence each receives.
+The new physical position is a weighted combination of the current position and the latest inferred river location.
+
+## A Concrete Step
+
+Use a one-dimensional east-west coordinate. Suppose you are at $w_k=0$ meters, the latest sound suggests $\text{target}_k=120$ meters, and $\alpha_k=0.25$. Then:
+
+$$
+w_{k+1}=0+0.25(120-0)=30\text{ meters}.
+$$
+
+You can complete this action without knowing the true riverbank. If an outside observer knows that $w^*=100$ meters, that observer can also say that the current judgment error was $\eta_k=20$ meters. The true location enters the analysis, not the traveler's calculation.
 
 This leaves the central question for the rest of the series:
 

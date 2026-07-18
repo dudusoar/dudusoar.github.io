@@ -60,7 +60,7 @@ $$
 A_k=\prod_{j=0}^{k-1}(1-\alpha_j)
 $$
 
-is the remaining weight on the initial estimate, and:
+is the remaining weight on the initial position, and:
 
 $$
 B_{k,i} =
@@ -206,3 +206,15 @@ The two Robbins–Monro conditions divide the work:
 - $\sum_k\alpha_k^2<\infty$ bounds the accumulated noise variance.
 
 The second condition does not tell the process to stop moving. It says that the strength with which each new disturbance is written into the state must become square-summable.
+
+## Why the Square Appears in a Simple Average
+
+With an appropriately initialized $\alpha_k=1/k$ update, the traveler's current position is the average of the first $k$ inferred river locations. Each judgment error therefore carries weight $1/k$.
+
+If one error has variance $\sigma^2$, its contribution to the position variance is weighted by $(1/k)^2$. Summing the $k$ independent contributions gives:
+
+$$
+k\cdot\frac{1}{k^2}\sigma^2=\frac{\sigma^2}{k}.
+$$
+
+The squared coefficient is not a technical accident: variance measures squared deviation, so a linear noise weight becomes a squared variance weight.

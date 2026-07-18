@@ -35,13 +35,13 @@ In the river analogy, $\alpha_k>1$ means walking past the estimated river locati
 
 ## Noise Makes Large Steps More Dangerous
 
-With noise:
+The traveler still acts on $\text{target}_k$. From the analyst's view, substituting $\text{target}_k=w^*+\eta_k$ gives:
 
 $$
 w_{k+1}=w_k+\alpha_k(w^*-w_k+\eta_k).
 $$
 
-The same coefficient that moves the estimate also scales the disturbance. If $\alpha_k>1$, it amplifies the noisy direction.
+The same coefficient that moves the traveler also scales the disturbance. If $\alpha_k>1$, it amplifies the noisy direction.
 
 The error recursion makes both effects explicit:
 
@@ -81,7 +81,7 @@ $$
 | $1.0$ | $\sigma^2$ |
 | $1.5$ | $2.25\sigma^2$ |
 
-The larger the step, the more strongly one noisy observation affects the next estimate.
+The larger the step, the more strongly one noisy judgment affects the next position.
 
 ## The Intersection of the Two Requirements
 
@@ -95,3 +95,15 @@ The larger the step, the more strongly one noisy observation affects the next es
 The interval $(0,1)$ is the only range that gives both monotone contraction and noise attenuation.
 
 Keeping $\alpha_k<1$ does not mean refusing to reach the target quickly. It means recognizing that the observed target may be wrong. Moving only partway preserves the ability to correct the route after the next observation.
+
+## A Concrete Overshoot
+
+Suppose you are at 0 meters and the latest sound suggests a river location at 80 meters:
+
+| $\alpha_k$ | New position | Interpretation |
+|---|---:|---|
+| $0.25$ | 20 meters | Walk one quarter of the inferred vector |
+| $1$ | 80 meters | Walk directly to the inferred location |
+| $1.5$ | 120 meters | Move beyond the inferred location |
+
+If the true riverbank is at 100 meters, the last move happens to land 20 meters past it. That does not make extrapolation a correction method: another noisy judgment could make the same amplification much worse.

@@ -69,6 +69,16 @@ The coefficient $\alpha_k$ therefore has three related meanings:
 
 1. the fraction of the proposed movement taken;
 2. the degree of trust placed in the latest observation;
-3. the weight assigned to new information relative to the old estimate.
+3. the weight assigned to the latest inferred location relative to the current position.
 
 Keeping the target difference unnormalized lets the update use the information it already has instead of throwing distance away.
+
+## A Concrete Movement
+
+Suppose you are at 0 meters and the latest sound suggests that the riverbank is at 120 meters. The full proposed vector has length 120 meters. With $\alpha_k=0.25$, you move:
+
+$$
+0.25\times120=30\text{ meters}.
+$$
+
+Later, if you are at 90 meters and a new judgment places the river at 110 meters, the same $\alpha_k=0.25$ moves you only 5 meters. The coefficient fixes a fraction, not a physical distance.
