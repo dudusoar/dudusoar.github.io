@@ -16,8 +16,7 @@ math: true
 Dvoretzky's recursion supports two natural proof routes:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k.
@@ -170,16 +169,14 @@ The expectation–variance route is not a redundant proof. It explains why the r
 The series began with:
 
 $$
-w_{k+1}
-=
+w_{k+1} =
 w_k+\alpha_k(\text{target}_k-w_k),
 $$
 
 converted it into:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \alpha_k\eta_k,
@@ -196,8 +193,7 @@ $$
 Dvoretzky then generalized the recursion to:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k.

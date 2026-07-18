@@ -28,18 +28,15 @@ What kind of convergence follows?
 By the variance identity:
 
 $$
-\operatorname{Var}(\Delta_k)
-=
-\mathbb{E}[\Delta_k^2]
--
+\operatorname{Var}(\Delta_k) =
+\mathbb{E}[\Delta_k^2] -
 \left(\mathbb{E}[\Delta_k]\right)^2.
 $$
 
 Therefore:
 
 $$
-\mathbb{E}[\Delta_k^2]
-=
+\mathbb{E}[\Delta_k^2] =
 \operatorname{Var}(\Delta_k)
 +
 \left(\mathbb{E}[\Delta_k]\right)^2.
@@ -84,8 +81,7 @@ $$
 \mathbb{P}
 \left(
 \lim_{k\to\infty}\Delta_k=0
-\right)
-=
+\right) =
 1.
 $$
 

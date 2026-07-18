@@ -16,8 +16,7 @@ math: true
 Dvoretzky's convergence theorem abstracts the stochastic-approximation error recursion into:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k.
@@ -30,8 +29,7 @@ It states that if old error is contracted persistently, the noise is conditional
 The earlier parts derived:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \alpha_k\eta_k,
@@ -126,8 +124,7 @@ That conditional increment connects the recursion to quasi-martingale and superm
 In the original update:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \alpha_k\eta_k,
@@ -141,8 +138,7 @@ the same coefficient controls:
 A general convergence theorem separates these roles:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k.
@@ -166,8 +162,7 @@ $$
 Let:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k,

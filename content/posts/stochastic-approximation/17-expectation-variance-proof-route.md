@@ -28,8 +28,7 @@ If both approach zero, the distribution of $\Delta_k$ concentrates near zero. Th
 Begin with:
 
 $$
-\Delta_{k+1}
-=
+\Delta_{k+1} =
 (1-\alpha_k)\Delta_k
 +
 \beta_k\eta_k.
@@ -44,8 +43,7 @@ The full Dvoretzky theorem allows more general random coefficients and history d
 Repeated substitution gives:
 
 $$
-\Delta_k
-=
+\Delta_k =
 \left[
 \prod_{i=0}^{k-1}(1-\alpha_i)
 \right]\Delta_0
@@ -71,8 +69,7 @@ $$
 then the noise terms disappear in expectation:
 
 $$
-\mathbb{E}[\Delta_k]
-=
+\mathbb{E}[\Delta_k] =
 \left[
 \prod_{i=0}^{k-1}(1-\alpha_i)
 \right]\Delta_0.
@@ -101,8 +98,7 @@ $$
 Under independent or uncorrelated noise:
 
 $$
-\operatorname{Var}(\Delta_k)
-=
+\operatorname{Var}(\Delta_k) =
 \sum_{j=0}^{k-1}
 \beta_j^2\sigma_j^2
 \prod_{i=j+1}^{k-1}(1-\alpha_i)^2,
