@@ -72,30 +72,29 @@
     </div>
 </section>
 
-{{- with site.GetPage "/posts/llm-system-architecture" }}
-<section class="home-section home-series" aria-labelledby="featured-series">
-    <div class="home-section__header">
-        <p>Series</p>
-        <h2 id="featured-series">A guided path through the architecture</h2>
-    </div>
-    <a class="home-series-card" href="{{ .RelPermalink }}">
-        <span class="home-series-card__kicker">Blog series · {{ len .RegularPages }} parts</span>
-        <strong>{{ .Title }}</strong>
-        <em>{{ .Description }}</em>
-        <span class="home-series-card__action">Explore the series <span aria-hidden="true">→</span></span>
-    </a>
-</section>
-{{- end }}
-
 {{- $recentPages := where site.RegularPages "Section" "in" (slice "posts" "papers" "projects" "tutorials") }}
 {{- $recentPages = where $recentPages "Params.hiddenInHomeList" "!=" true }}
-{{- $recentPages = first 5 $recentPages }}
-{{- if $recentPages }}
+{{- $recentPages = first 4 $recentPages }}
+{{- $recentSeries := site.GetPage "/posts/llm-system-architecture" }}
+{{- if or $recentSeries $recentPages }}
 <section class="home-section home-updates" aria-labelledby="recent-updates">
     <div class="home-section__header">
         <p>Recent</p>
         <h2 id="recent-updates">Writing and updates</h2>
     </div>
+    {{- with $recentSeries }}
+    <article class="post-entry home-recent-series">
+        <span class="home-recent-series__kicker">Series · {{ len .RegularPages }} parts</span>
+        <header class="entry-header">
+            <h2 class="entry-hint-parent">{{ .Title }}</h2>
+        </header>
+        <div class="entry-content">
+            <p>{{ .Description }}</p>
+        </div>
+        <footer class="entry-footer">Published {{ .Date.Format "January 2, 2006" }} · {{ len .RegularPages }} parts</footer>
+        <a class="entry-link" aria-label="Open series {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{- end }}
     {{- range $recentPages }}
     <article class="post-entry">
         <header class="entry-header">

@@ -1,5 +1,6 @@
 ---
 title: "Building Auditable LLM Systems"
+date: 2026-07-17
 description: "An 11-part series on designing LLM decision systems whose information, tools, actions, memory, and evaluation can be validated and traced."
 layout: "series"
 weight: 1
