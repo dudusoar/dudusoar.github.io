@@ -1,5 +1,5 @@
 ---
-title: "A Training Target Must Be Both Observable and Executable"
+title: "Use Only Observable and Executable Training Targets"
 date: 2026-07-17
 draft: false
 weight: 11
@@ -13,7 +13,7 @@ math: false
 
 > **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 11 of 11
 
-A stronger planner or teacher producing a better result does not mean its choice can be used directly as an LLM training target.
+A better result from a stronger planner or teacher is not automatically a valid LLM training target.
 
 A result is eligible for training only when it passes two gates:
 
@@ -31,13 +31,13 @@ the question visible to the model
     -> the action the model should produce
 ```
 
-If the answer depends on information absent from the question, or requires an action outside the model's authority, the example is not merely difficult. It is invalid for the current learning contract.
+An example is invalid for the current learning contract if its answer depends on information absent from the question or requires an action outside the model's authority.
 
-A strong teacher result should therefore pass information compatibility and action compatibility before its quality is considered.
+Evaluate information compatibility and action compatibility before considering the quality of a teacher result.
 
 ## Gate 1: Could the Model See the Same Basis?
 
-The question is not whether the teacher and model used the same complete case. It is:
+Rather than asking whether the teacher and model used the same complete case, ask:
 
 > Why did the teacher choose this action at this decision point, and was that decisive evidence present in the model's actual input?
 
@@ -77,7 +77,7 @@ If these conditions fail, the result identifies an action-space gap rather than 
 
 The last three categories are not useless. Repeated information gaps may justify adding a legitimate observable signal. Repeated action gaps may justify redesigning the action contract. A result that fails both gates can still quantify the value of a stronger system.
 
-What should not happen is silently mapping those results to the nearest legal label simply to increase the training-set size.
+Do not silently map those results to the nearest legal label simply to increase the training-set size.
 
 ## A Concrete Example
 
@@ -112,7 +112,7 @@ If answer provenance, hindsight results, or compatibility judgments leak into th
 
 Equal information and executable action establish that a target does not violate the learning contract. They do not establish that it is a good target.
 
-Further checks should ask:
+Then ask:
 
 - Is the teacher actually better than a simple rule or current policy?
 - Are labels stable across similar states rather than sensitive to random seeds?

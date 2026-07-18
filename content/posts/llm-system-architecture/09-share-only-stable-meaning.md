@@ -1,10 +1,10 @@
 ---
-title: "Share Only the Modules Whose Meaning Survives a Method Change"
+title: "Share Only Modules Whose Meaning Survives a Method Change"
 date: 2026-07-17
 draft: false
 weight: 9
 hiddenInHomeList: true
-description: "Code should be shared across LLM methods only when its meaning, lifecycle, failure handling, and tests remain unchanged."
+description: "Share code across LLM methods only when its meaning, lifecycle, failure handling, and tests remain unchanged."
 tags: ["LLM systems", "software architecture", "research engineering", "modularity"]
 categories: ["technical"]
 showToc: true
@@ -13,11 +13,11 @@ math: false
 
 > **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 9 of 11
 
-Several LLM methods can share infrastructure, but only components whose meaning, timing, and tests remain unchanged should be shared.
+Several LLM methods can share infrastructure. Share only the components whose meaning, timing, and tests remain unchanged.
 
 Sending model requests, validating output structure, recording traces, and executing legal actions are often generic. The meaning of evidence, the semantics of an action, the way experience is learned, and the definition of success are usually method-specific.
 
-The boundary should not be decided by code duplication alone. It should be decided by whether sharing changes or conceals the meaning of the method.
+Do not decide the boundary from code duplication alone. Ask whether sharing changes or conceals the meaning of the method.
 
 ## The Basic Question
 
@@ -38,7 +38,7 @@ A better test is:
 - If no, it belongs inside the method.
 - If it is stable only within one family of methods, share it within that family rather than across the entire system.
 
-## The Shared Layer Should Perform Mechanical Work
+## Keep the Shared Layer Focused on Mechanical Work
 
 Shared infrastructure handles work whose meaning remains stable across methods:
 
@@ -50,7 +50,7 @@ Shared infrastructure handles work whose meaning remains stable across methods:
 - pass an accepted action to a deterministic executor;
 - save component versions and checkpoints.
 
-These operations do not need to know why a particular piece of evidence matters or which action is preferable. They should continue working quietly when the method changes.
+These operations do not need to know why a particular piece of evidence matters or which action is preferable. They continue working unchanged when the method changes.
 
 This is often called a shared runtime. The name matters less than the constraint: it must not contain a hidden position on the method being evaluated.
 
@@ -115,7 +115,7 @@ The shared layer provides stable slots. The method fills those slots with its ow
 | Is failure handling the same? | Missing, invalid, timed-out, or rejected states receive the same treatment |
 | Are the tests the same? | One test suite can protect the behavior without method-specific reinterpretation |
 
-If any answer is no, the component should remain method-specific or be shared only inside a narrower family.
+If any answer is no, keep the component method-specific or share it only inside a narrower family.
 
 ## Every Layer Has a Shared Shell and Method-Specific Meaning
 
@@ -127,4 +127,4 @@ If any answer is no, the component should remain method-specific or be shared on
 | Workflow | Call, validation, retry, logging, and execution order | How evidence enters judgment and when capabilities are used |
 | Memory | Storage, versioning, provenance, and read-only access | Experience content, applicability, retrieval, and utilization |
 
-The goal of research engineering is not to eliminate as much duplication as possible. It is to make every experiment and system behavior interpretable. A mature shared component continues to work when the method changes. If it repeatedly needs to know which method is active, it probably contains meaning that belongs in the adapter.
+Research engineering aims to make every experiment and system behavior interpretable, not to eliminate as much duplication as possible. A mature shared component continues to work when the method changes. If it repeatedly needs to know which method is active, it probably contains meaning that belongs in the adapter.

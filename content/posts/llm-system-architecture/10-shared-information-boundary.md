@@ -1,5 +1,5 @@
 ---
-title: "Every Decision Point Needs a Shared Information Boundary"
+title: "Give Every Decision Point a Shared Information Boundary"
 date: 2026-07-17
 draft: false
 weight: 10
@@ -55,7 +55,7 @@ Problems arise when:
 - a tool can query hidden backend truth despite the declared visibility boundary;
 - memory contains outcomes that occur later in the current held-out episode.
 
-An audit should therefore preserve two records:
+Preserve two records in the audit:
 
 1. the common state that every method was allowed to use;
 2. the actual view delivered to each method.
@@ -64,9 +64,9 @@ Only then can an evaluator detect whether compression, omitted fields, or tool a
 
 ## Tools and Memory Must Obey the Same Boundary
 
-A tool is not a back door around prompt visibility. It may return only facts determined by the current observable state and past history. Even if the backend knows the complete future, the online model should not receive it.
+A tool is not a back door around prompt visibility. It may return only facts determined by the current observable state and past history. Even if the backend knows the complete future, the online model must not receive it.
 
-Memory may contain experience extracted from a training set. It must not contain the future of the current validation or test episode. Each memory record should retain provenance and applicability conditions so that historical knowledge can be distinguished from leakage.
+Memory may contain experience extracted from a training set. It must not contain the future of the current validation or test episode. Each memory record retains provenance and applicability conditions so that historical knowledge can be distinguished from leakage.
 
 ## A Strong Planner Can Play Two Different Roles
 
@@ -100,7 +100,7 @@ Only the fourth difference can be interpreted as a reasoning, policy, or model-c
 
 ## Minimum Audit Record
 
-Every comparison should make it possible to reconstruct:
+For every comparison, make it possible to reconstruct:
 
 - the decision point and its position relative to events;
 - which events, state changes, and earlier actions were visible;

@@ -1,10 +1,10 @@
 ---
-title: "A Prompt Is a Decision Interface, Not a Dump of System State"
+title: "Treat the Prompt as a Decision Interface, Not a State Dump"
 date: 2026-07-17
 draft: false
 weight: 5
 hiddenInHomeList: true
-description: "Prompts should follow the order of an actual decision and keep facts, memory, tools, actions, and runtime logic in separate layers."
+description: "A prompt follows the order of an actual decision and keeps facts, memory, tools, actions, and runtime logic in separate layers."
 tags: ["LLM systems", "prompt design", "decision interfaces", "evaluation"]
 categories: ["technical"]
 showToc: true
@@ -13,9 +13,9 @@ math: false
 
 > **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 5 of 11
 
-A prompt is not a place to concatenate everything the system knows. It is the model's decision interface.
+The prompt is the model's decision interface, not a place to concatenate everything the system knows.
 
-A well-designed prompt follows the order in which a decision must be made. It explains the task, the action boundary, the current facts, relevant history or external experience, the requested justification, and the output contract. Content with different sources and responsibilities should not be mixed into one undifferentiated block.
+A well-designed prompt follows the order of the decision. It explains the task, the action boundary, the current facts, relevant history or external experience, the requested justification, and the output contract. Keep content with different sources and responsibilities in distinct blocks.
 
 This structure makes it possible to know what the model actually saw, why it made a judgment, and whether two methods were compared under the same prompt contract.
 
@@ -23,7 +23,7 @@ This structure makes it possible to know what the model actually saw, why it mad
 
 When a model reads a prompt for the first time, it needs to understand the problem before it sees internal version identifiers, audit fields, tool metadata, or a large raw state table.
 
-A useful reading order is:
+Use this reading order:
 
 ```text
 task context
@@ -47,7 +47,7 @@ This mirrors the actual decision process:
 
 Prompts organized by artifact-generation order often do the opposite. They begin with internal metadata, then append raw state, then mix policy rules, history, and output fields. That order may be convenient for code assembly, but it creates a poor decision interface.
 
-## Each Layer Should Carry Only Its Own Content
+## Keep Each Layer Focused on Its Own Content
 
 | Content | Proper source | What should not be mixed into it |
 |---|---|---|
@@ -59,25 +59,23 @@ Prompts organized by artifact-generation order often do the opposite. They begin
 | Verification, retry, and fallback | Workflow and runtime | Execution logic disguised as prompt advice |
 | Debugging and complete audit data | Artifacts and logs | Fields irrelevant to the current judgment |
 
-The prompt may describe legal actions and the required return format. It should not ask the model to perform deterministic validation or to reproduce runtime logic in natural language.
+The prompt describes legal actions and the required return format. Deterministic validation and runtime logic remain outside the model.
 
-## Observation Tools Should Return Facts, Not Policy
+## Return Facts from Observation Tools, Not Policy
 
-One of the most subtle prompt contaminations occurs when an observation tool returns candidate rankings, preferred actions, or decision hints.
+An observation tool contaminates the prompt when it returns candidate rankings, preferred actions, or decision hints. Once the tool embeds a deterministic policy, a correct model answer may simply repeat a hidden recommendation rather than demonstrate model reasoning.
 
-If the tool has already embedded a deterministic policy, a correct model answer no longer demonstrates model reasoning. The model may simply be repeating a hidden recommendation.
-
-A prompt-visible observation tool should be explicit:
+Declare this boundary for every prompt-visible observation tool:
 
 ```text
 returns_action_recommendations = false
 ```
 
-If a deterministic procedure can already decide the action, it should be implemented and evaluated as a baseline or policy in its own right. It should not be hidden inside an observation interface and attributed to the model.
+If a deterministic procedure can decide the action, implement and evaluate it as a baseline or policy in its own right. Do not hide it inside an observation interface and attribute the decision to the model.
 
 ## Keep the System Prompt Short and Stable
 
-The system prompt should contain the stable role, task, and highest-level boundaries. Dynamic state, candidates, memory, evidence, and output fields should arrive through named and versioned payloads.
+Keep the stable role, task, and highest-level boundaries in the system prompt. Deliver dynamic state, candidates, memory, evidence, and output fields through named and versioned payloads.
 
 This prevents two common problems:
 
@@ -88,7 +86,7 @@ Different methods can share a common reading skeleton while supplying their own 
 
 ## Expose the Minimum Decision-Relevant View
 
-Complete state packets, raw artifacts, and audit records should be stored outside the prompt. The model should receive a compact view containing the facts needed for the current decision.
+Store complete state packets, raw artifacts, and audit records outside the prompt. Give the model a compact view of the facts needed for the current decision.
 
 Repeated facts are especially dangerous. If the same value appears in a raw packet, a tool output, a table, and a natural-language summary, the prompt grows while creating opportunities for inconsistency.
 
@@ -104,7 +102,7 @@ A prompt budget is therefore an information-priority policy:
 
 A prompt file existing in a repository does not prove that a live policy consumed it.
 
-Every important run should preserve:
+For every important run, preserve:
 
 - the actual system prompt and payload sent to the model;
 - a prompt variant, version, or hash;
@@ -117,11 +115,11 @@ Runtime artifacts, not source-code presence, establish which prompt contract aff
 
 ## Prompt Layers Are Experimental Variables
 
-Clear layering makes controlled comparisons possible. A no-memory condition and a memory-enabled condition should share the task, action semantics, observation, and output contract. Only the retrieved evidence layer should change.
+Clear layering makes controlled comparisons possible. Keep the task, action semantics, observation, and output contract fixed between no-memory and memory-enabled conditions. Change only the retrieved evidence layer.
 
 When several layers change together, it becomes impossible to tell whether a result came from wording, additional information, tool hints, a larger action space, or actual model capability.
 
-A good prompt is not a longer and more sophisticated policy document. It is a boundary-conscious decision interface. Every block should answer three questions:
+A boundary-conscious decision interface does not improve by growing into a longer policy document. Every block must answer three questions:
 
 - Why is this information provided by this component?
 - Why does the model need it for the current action?

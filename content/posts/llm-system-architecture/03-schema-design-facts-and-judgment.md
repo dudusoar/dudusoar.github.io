@@ -1,10 +1,10 @@
 ---
-title: "Schema Design for LLM Systems: Separate Facts from Model Judgment"
+title: "Separate Facts from Model Judgment in LLM Schemas"
 date: 2026-07-17
 draft: false
 weight: 3
 hiddenInHomeList: true
-description: "A schema should preserve the boundary between computed facts, model judgments, explicit rationale, and external feedback."
+description: "A schema preserves the boundary between computed facts, model judgments, explicit rationale, and external feedback."
 tags: ["LLM systems", "schema design", "reasoning", "auditability"]
 categories: ["technical"]
 showToc: true
@@ -13,25 +13,25 @@ math: false
 
 > **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 3 of 11
 
-A schema in an LLM system is not merely a list of fields. It defines the boundary between facts, model judgment, and feedback.
+An LLM schema does more than list fields. It defines the boundary between facts, model judgment, and feedback.
 
 Two principles are especially important:
 
-1. Every field should distinguish values produced by deterministic computation from values inferred by the model.
-2. Every model judgment should be stored with the explicit rationale or justification produced for that decision.
+1. Label whether each value comes from deterministic computation or model inference.
+2. Store every model judgment with the explicit rationale produced for that decision.
 
-The first principle protects the factual boundary. The second preserves the most useful first-person feedback available for understanding a model decision.
+The first principle protects the factual boundary. The second preserves the model's decision-time account of its judgment.
 
 ## Principle 1: Distinguish Computed Fields from Model Inference
 
-Every schema field should have a clear producer.
+Give every schema field a clear producer.
 
 | Field type | What it describes | Typical content | How it can be checked |
 |---|---|---|---|
 | Computed fact | What happened or what the system knows | IDs, time, state, cost, constraints, tool results, verifier results, execution outcomes | Unit tests, recomputation, schema validation, artifact reconciliation |
 | Model inference | How the model interprets facts | Hypotheses, risks, applicability judgments, proposed actions, uncertainty, rationale | Evidence references, consistency checks, repeated tests, human audit |
 
-If a field can be reconstructed by stable code or an external artifact, the model should not regenerate it for convenience. The model may read a cost, a feasibility result, or a tool output, but it should not overwrite those values.
+If stable code or an external artifact can reconstruct a field, do not ask the model to regenerate it for convenience. The model may read a cost, a feasibility result, or a tool output, but it must not overwrite those values.
 
 This rule applies across the system:
 
@@ -41,7 +41,7 @@ This rule applies across the system:
 - A memory schema reconstructs an episode before asking the model to extract a lesson.
 - An evaluation schema computes outcomes before asking the model to interpret them.
 
-Field origin should therefore be part of the schema contract rather than an assumption hidden in code or prompt text.
+Make field origin part of the schema contract rather than an assumption hidden in code or prompt text.
 
 ## Principle 2: Preserve the Model-Provided Rationale
 
@@ -53,21 +53,21 @@ A final label or action tells us what the model selected. It does not tell us:
 - why one action was selected over alternatives;
 - what uncertainty remained.
 
-A model judgment should therefore be stored with an explicit, decision-time rationale.
+Store each model judgment with an explicit, decision-time rationale.
 
 To make that rationale useful rather than merely verbose, four constraints help.
 
 ### Bind the rationale to evidence
 
-The explanation should cite concrete `evidence_refs` that point to fields or tool results the model actually saw. An explanation without evidence anchors cannot be checked.
+Require the explanation to cite concrete `evidence_refs` that point to fields or tool results the model actually saw. An explanation without evidence anchors cannot be checked.
 
 ### Freeze the rationale with the decision
 
-The factual snapshot, rationale, and judgment should be saved together. Later verifier results, human review, and execution outcomes may be appended, but they should not rewrite the original rationale. Otherwise the record becomes a post-hoc explanation.
+Save the factual snapshot, rationale, and judgment together. Append verifier results, human review, and execution outcomes later, but never rewrite the original rationale. Otherwise the record becomes a post-hoc explanation.
 
 ### Keep raw justification and structured fields together
 
-Preserve the original model-provided explanation while also extracting fields such as `decision_factors`, `alternatives_considered`, and `uncertainty`. Structured summaries support search and comparison, but they should not silently replace the original response.
+Preserve the original model-provided explanation while also extracting fields such as `decision_factors`, `alternatives_considered`, and `uncertainty`. Structured summaries support search and comparison, but they must not silently replace the original response.
 
 ### Do not confuse rationale with ground truth
 
@@ -95,9 +95,9 @@ computed_feedback:
   execution_outcome: ...
 ```
 
-## A Schema Should Preserve the Complete Decision Scene
+## Preserve the Complete Decision Scene
 
-The object being recorded is not merely a final output. It is a decision trajectory:
+The schema records a decision trajectory, not just a final output:
 
 ```text
 what the model saw
@@ -137,4 +137,4 @@ computed facts
     -> comparison and feedback
 ```
 
-The goal of schema design is not to make the model fill every field. It is to preserve a decision scene that can be reconstructed later: facts supplied by the system, judgment supplied by the model, the rationale frozen with that judgment, and external feedback appended afterward.
+Schema design does not ask the model to fill every field. It preserves a decision scene that can be reconstructed later: facts supplied by the system, judgment supplied by the model, the rationale frozen with that judgment, and external feedback appended afterward.
