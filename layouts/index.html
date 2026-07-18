@@ -75,14 +75,17 @@
 {{- $recentPages := where site.RegularPages "Section" "in" (slice "posts" "papers" "projects" "tutorials") }}
 {{- $recentPages = where $recentPages "Params.hiddenInHomeList" "!=" true }}
 {{- $recentPages = first 4 $recentPages }}
-{{- $recentSeries := site.GetPage "/posts/llm-system-architecture" }}
-{{- if or $recentSeries $recentPages }}
+{{- $recentSeries := slice }}
+{{- with site.GetPage "/posts" }}
+{{- $recentSeries = first 2 .Sections.ByWeight.Reverse }}
+{{- end }}
+{{- if or (gt (len $recentSeries) 0) $recentPages }}
 <section class="home-section home-updates" aria-labelledby="recent-updates">
     <div class="home-section__header">
         <p>Recent</p>
         <h2 id="recent-updates">Writing and updates</h2>
     </div>
-    {{- with $recentSeries }}
+    {{- range $recentSeries }}
     <article class="post-entry home-recent-series">
         <span class="home-recent-series__kicker">Series · {{ len .RegularPages }} parts</span>
         <header class="entry-header">
