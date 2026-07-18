@@ -1,0 +1,73 @@
+{{- define "main" }}
+
+<header class="page-header">
+    {{- partial "breadcrumbs.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}
+    <div class="post-description">{{ . | markdownify }}</div>
+    {{- end }}
+</header>
+
+{{- with .Content }}
+<div class="post-content">{{ . }}</div>
+{{- end }}
+
+{{- with .Sections }}
+<section class="blog-group" aria-labelledby="blog-series">
+    <header class="blog-group__header">
+        <p>Collections</p>
+        <h2 id="blog-series">Series</h2>
+    </header>
+    <div class="blog-series-grid">
+        {{- range .ByWeight }}
+        <a class="blog-series-card" href="{{ .RelPermalink }}">
+            <span class="blog-series-card__kicker">Series · {{ len .RegularPages }} parts</span>
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Description }}</p>
+            <span class="blog-series-card__action">Explore the series <span aria-hidden="true">→</span></span>
+        </a>
+        {{- end }}
+    </div>
+</section>
+{{- end }}
+
+{{- $paginator := .Paginate .RegularPages }}
+{{- with $paginator.Pages }}
+<section class="blog-group" aria-labelledby="blog-articles">
+    <header class="blog-group__header">
+        <p>Latest</p>
+        <h2 id="blog-articles">Articles</h2>
+    </header>
+    {{- range . }}
+    <article class="post-entry">
+        <header class="entry-header">
+            <h2 class="entry-hint-parent">{{ .Title }}</h2>
+        </header>
+        {{- if (ne (.Param "hideSummary") true) }}
+        <div class="entry-content">
+            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <footer class="entry-footer">{{- partial "post_meta.html" . -}}</footer>
+        {{- end }}
+        <a class="entry-link" aria-label="Open {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{- end }}
+</section>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+    <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">«&nbsp;Previous</a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">Next&nbsp;»</a>
+        {{- end }}
+    </nav>
+</footer>
+{{- end }}
+
+{{- end }}

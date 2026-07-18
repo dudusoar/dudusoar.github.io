@@ -3,7 +3,7 @@ title: "A Training Target Must Be Both Observable and Executable"
 date: 2026-07-17
 draft: false
 weight: 11
-series: ["Building Auditable LLM Systems"]
+hiddenInHomeList: true
 description: "A strong teacher result is a valid target only when the model can observe its basis and execute the same action."
 tags: ["LLM systems", "training data", "teacher labels", "action spaces"]
 categories: ["technical"]
@@ -11,7 +11,7 @@ showToc: true
 math: false
 ---
 
-> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 11 of 11
+> **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 11 of 11
 
 A stronger planner or teacher producing a better result does not mean its choice can be used directly as an LLM training target.
 

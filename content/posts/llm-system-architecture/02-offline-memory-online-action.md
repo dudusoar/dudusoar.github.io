@@ -3,7 +3,7 @@ title: "Separate Offline Memory Extraction from Online Action Execution"
 date: 2026-07-17
 draft: false
 weight: 2
-series: ["Building Auditable LLM Systems"]
+hiddenInHomeList: true
 description: "A clean LLM architecture separates the production of reusable experience from its read-only use during online decisions."
 tags: ["LLM systems", "memory", "online decision making", "evaluation"]
 categories: ["technical"]
@@ -11,7 +11,7 @@ showToc: true
 math: false
 ---
 
-> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 2 of 11
+> **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 2 of 11
 
 An LLM system that learns from historical experience and acts online has two fundamentally different jobs:
 

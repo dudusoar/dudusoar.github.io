@@ -1,0 +1,40 @@
+{{- define "main" }}
+
+<header class="page-header series-header">
+    {{- partial "breadcrumbs.html" . }}
+    <p class="series-kicker">Blog series · {{ len .RegularPages }} parts</p>
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}
+    <div class="post-description">{{ . | markdownify }}</div>
+    {{- end }}
+</header>
+
+{{- with .Content }}
+<div class="post-content">{{ . }}</div>
+{{- end }}
+
+<section class="blog-group" aria-labelledby="series-contents">
+    <header class="blog-group__header">
+        <p>Contents</p>
+        <h2 id="series-contents">All {{ len .RegularPages }} parts</h2>
+    </header>
+    <div class="series-article-list">
+        {{- range .RegularPages.ByWeight }}
+        <article class="post-entry series-entry">
+            <span class="series-entry__part">Part {{ .Weight }}</span>
+            <header class="entry-header">
+                <h2 class="entry-hint-parent">{{ .Title }}</h2>
+            </header>
+            <div class="entry-content">
+                <p>{{ .Description }}</p>
+            </div>
+            {{- if not (.Param "hideMeta") }}
+            <footer class="entry-footer">{{- partial "post_meta.html" . -}}</footer>
+            {{- end }}
+            <a class="entry-link" aria-label="Open Part {{ .Weight }}: {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+        </article>
+        {{- end }}
+    </div>
+</section>
+
+{{- end }}

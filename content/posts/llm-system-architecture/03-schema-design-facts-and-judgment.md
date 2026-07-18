@@ -3,7 +3,7 @@ title: "Schema Design for LLM Systems: Separate Facts from Model Judgment"
 date: 2026-07-17
 draft: false
 weight: 3
-series: ["Building Auditable LLM Systems"]
+hiddenInHomeList: true
 description: "A schema should preserve the boundary between computed facts, model judgments, explicit rationale, and external feedback."
 tags: ["LLM systems", "schema design", "reasoning", "auditability"]
 categories: ["technical"]
@@ -11,7 +11,7 @@ showToc: true
 math: false
 ---
 
-> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 3 of 11
+> **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 3 of 11
 
 A schema in an LLM system is not merely a list of fields. It defines the boundary between facts, model judgment, and feedback.
 

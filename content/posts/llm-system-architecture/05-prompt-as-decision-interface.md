@@ -3,7 +3,7 @@ title: "A Prompt Is a Decision Interface, Not a Dump of System State"
 date: 2026-07-17
 draft: false
 weight: 5
-series: ["Building Auditable LLM Systems"]
+hiddenInHomeList: true
 description: "Prompts should follow the order of an actual decision and keep facts, memory, tools, actions, and runtime logic in separate layers."
 tags: ["LLM systems", "prompt design", "decision interfaces", "evaluation"]
 categories: ["technical"]
@@ -11,7 +11,7 @@ showToc: true
 math: false
 ---
 
-> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 5 of 11
+> **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 5 of 11
 
 A prompt is not a place to concatenate everything the system knows. It is the model's decision interface.
 
