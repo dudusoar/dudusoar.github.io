@@ -10,4 +10,4 @@ aliases:
 
 Reliable LLM systems require more than a capable model and a carefully written prompt. They need explicit boundaries around facts, tools, memory, actions, execution, and feedback.
 
-This series develops those boundaries one component at a time. Each article began as an independent engineering knowledge card and remains readable on its own; together, the eleven parts form a practical architecture for auditable LLM decision systems.
+This series develops those boundaries one component at a time. Each article addresses one design problem and stands on its own; together, the eleven parts form a practical architecture for building LLM decision systems that can be validated, replayed, and audited.

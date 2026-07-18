@@ -1,5 +1,5 @@
 ---
-title: "The Action Space Is the Anchor of LLM System Design"
+title: "Use the Action Space to Anchor LLM System Design"
 date: 2026-07-17
 draft: false
 weight: 7
@@ -13,9 +13,9 @@ math: false
 
 > **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 7 of 11
 
-The action space is the anchor of an LLM decision system.
+Begin the design of an LLM decision system with its action space.
 
-Before designing prompts, tools, memory, or workflow logic, the system should answer a simpler question: **What is the model actually allowed to change?**
+Before designing prompts, tools, memory, or workflow logic, answer a simpler question: **What is the model actually allowed to change?**
 
 Once that boundary is fixed, the rest of the architecture can be derived from it:
 
@@ -32,7 +32,7 @@ Schemas, prompts, tools, workflows, and memory all serve this chain from informa
 
 ## Define the Complete Action Contract
 
-An action cannot be defined by a label such as `approve`, `defer`, or `escalate` alone. A complete action contract should specify:
+An action cannot be defined by a label such as `approve`, `defer`, or `escalate` alone. A complete action contract specifies:
 
 | Question | What must be fixed |
 |---|---|
@@ -45,7 +45,7 @@ An action cannot be defined by a label such as `approve`, `defer`, or `escalate`
 | What happens under uncertainty? | Abstain, defer, request evidence, or another pre-authorized exit |
 | How is the consequence measured? | Immediate state change, delayed outcome, cost, and failure boundary |
 
-An explicit uncertainty exit matters. If a system forces the model to choose a positive action with insufficient evidence, the model is likely to fill the evidence gap with a fluent justification. Whether it may abstain or request more evidence should be decided by the contract, not invented during inference.
+An explicit uncertainty exit matters. If a system forces the model to choose a positive action with insufficient evidence, the model is likely to fill the evidence gap with a fluent justification. Define abstention and evidence requests in the contract rather than inventing them during inference.
 
 ## Derive Every Component from the Action Space
 
@@ -73,7 +73,7 @@ raw model response
     -> effective backend action
 ```
 
-A robust implementation has several properties:
+A bounded implementation has several properties:
 
 - legal actions use a closed enum or bounded parameters;
 - only structured action fields enter the execution interface;
@@ -87,7 +87,7 @@ The model may propose an action. It cannot gain new authority by inventing a fie
 
 ## Require a Traceable Justification Chain
 
-A structurally legal action may still be unsupported or based on fabricated evidence. Every decision should therefore preserve:
+A structurally legal action may still be unsupported or based on fabricated evidence. Preserve this chain for every decision:
 
 ```text
 information
@@ -119,7 +119,7 @@ proposed_action:
 expected_consequence: ...
 ```
 
-The evidence snapshot, analysis, rationale, and proposal should be frozen together. Later outcomes may be appended but should not rewrite the original decision.
+Freeze the evidence snapshot, analysis, rationale, and proposal together. Append later outcomes without rewriting the original decision.
 
 ## Reconnect Actions to Consequences
 
@@ -134,14 +134,14 @@ proposed action
     -> attributed feedback
 ```
 
-These states should not be collapsed:
+Keep these states separate:
 
 - If a proposal is rejected, the later outcome is not the consequence of that proposal.
 - If fallback is used, the learning target is the effective action while the failed proposal remains recorded.
 - Immediate consequences describe direct state changes; delayed outcomes may depend on later events and decisions.
 - Co-occurrence of an action and an outcome does not establish causality.
 
-When attribution is uncertain, the record should say so:
+When attribution is uncertain, record it explicitly:
 
 ```yaml
 decision_context: ...

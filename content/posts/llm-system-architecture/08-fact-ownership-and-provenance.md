@@ -1,5 +1,5 @@
 ---
-title: "Fix Fact Ownership and Evidence Provenance in LLM Systems"
+title: "Establish Fact Ownership and Evidence Provenance in LLM Systems"
 date: 2026-07-17
 draft: false
 weight: 8
@@ -15,13 +15,13 @@ math: false
 
 Every fact, interpretation, and decision in an LLM system needs a clear owner.
 
-An artifact records what happened. A model may interpret evidence but should not overwrite it. A validator decides whether derived content is suitable for a versioned asset. A controller may propose an action, while a verifier and backend decide what is actually executed.
+An artifact records what happened. A model may interpret evidence but cannot overwrite it. A validator determines whether derived content is suitable for a versioned asset. A controller proposes an action; a verifier and backend determine what is actually executed.
 
 Any derived information must preserve the lineage from source facts to final use. Being summarized by a model, stored in memory, or inserted into a prompt does not grant information greater factual authority.
 
 ## Ownership Means Authority to Treat Something as True
 
-Ownership is not about which module stores a file. It is about who may generate, validate, modify, and rely on a class of information.
+Ownership defines who may generate, validate, modify, and rely on a class of information—not which module stores a file.
 
 For example, a model may suggest that an increase in a metric is related to a particular mechanism. It cannot therefore rewrite the metric value or claim that the mechanism has been proven. Memory may preserve the interpretation for future retrieval, but storage does not turn a hypothesis into a fact.
 
@@ -33,11 +33,11 @@ derived interpretations: what those facts may mean
 decisions and consequences: what the system proposed, executed, and later observed
 ```
 
-These objects can be connected. They should never overwrite one another.
+Connect these objects without allowing one to overwrite another.
 
 ## Each Layer Owns Only Its Own Judgment
 
-| Layer | What it may decide | What it may not decide |
+| Layer | What it owns | What it does not own |
 |---|---|---|
 | Environment or artifact | State, data split, provenance, algorithm results, and outcomes | Why those facts matter or which action should be taken |
 | Tool | Read authorized sources and perform deterministic computation or tracing | Recommend actions or produce unsupported mechanism claims |
@@ -48,11 +48,11 @@ These objects can be connected. They should never overwrite one another.
 | Verifier and backend | Decide legality and feasibility, then produce the effective action | Rewrite what the model saw or its original rationale |
 | Audit log | Append records of transformation, exposure, use, and execution | Replace failed or inconvenient history with a clean narrative |
 
-The purpose of these boundaries is not to create more modules. It is to stop authority from drifting between them.
+These boundaries prevent authority from drifting between layers; the number of modules is secondary.
 
 ## Define an Ownership Contract
 
-Marking a field as `computed` or `model_generated` is useful but incomplete. A reusable object should answer:
+Labels such as `computed` and `model_generated` are useful, but they do not fully specify ownership. A reusable object answers:
 
 ```yaml
 object_type: ...
@@ -94,22 +94,22 @@ immutable source artifact
     -> observed outcome + append-only audit
 ```
 
-Every step may add information, but it must not silently change the meaning of the previous step.
+Each step may add information, but it must preserve the meaning of the previous step.
 
-- An evidence view may filter and compute but should not pretend to be the raw source.
-- A model abstraction may interpret but should not pretend to be deterministic evidence.
-- A memory asset may organize experience but should retain source references.
-- Retrieval may rank and expose evidence but should not turn ranking into an action recommendation.
-- A controller may propose an action but should not label it as the effective action.
-- An outcome may add feedback but should not be rewritten as information available before the decision.
+- An evidence view may filter and compute, but it remains distinct from the raw source.
+- A model abstraction may interpret, but it remains distinct from deterministic evidence.
+- A memory asset may organize experience while retaining source references.
+- Retrieval may rank and expose evidence without turning the ranking into an action recommendation.
+- A controller may propose an action, but only the verifier and backend produce the effective action.
+- An outcome adds feedback without becoming information that was available before the decision.
 
 Provenance is therefore more than a path. It records transformations, versions, producers, validators, and the exact view used at decision time.
 
 ## Artifacts Are Snapshots; Memory Is a Controlled Derivative
 
-An artifact preserves a reviewable decision scene or execution result. It may contain deterministic facts, model output, and external feedback, but every part should remain clearly labeled by origin.
+An artifact preserves a reviewable decision scene or execution result. It may contain deterministic facts, model output, and external feedback; label each part clearly by origin.
 
-Memory is a versioned derivative compiled from historical evidence. It should retain:
+Memory is a versioned derivative compiled from historical evidence. It retains:
 
 ```text
 source provenance
@@ -119,11 +119,11 @@ validation status
 applicability and visibility contract
 ```
 
-A lesson or warning stored in memory remains an interpretation based on evidence. It is not automatically true for a future case. Online retrieval should expose only the version authorized by the current split and visibility contract.
+A lesson or warning stored in memory remains an interpretation based on evidence. It is not automatically true for a future case. Online retrieval exposes only the version authorized by the current split and visibility contract.
 
 ## Correct by Appending, Not by Rewriting History
 
-An auditable system should correct itself by adding new records or versions:
+An auditable system corrects itself by adding new records or versions:
 
 - Freeze the model's original analysis, rationale, and proposal at decision time.
 - Append verifier rejection, fallback, and effective action afterward.
@@ -136,7 +136,7 @@ This is how the system can answer what the model knew then, why it acted, what w
 
 ## Provenance Enables Layer-by-Layer Attribution
 
-A final result should be traceable through the following questions:
+Trace a final result through the following questions:
 
 - Where did the source facts come from?
 - Which deterministic or model-generated transformations were applied?
@@ -147,6 +147,6 @@ A final result should be traceable through the following questions:
 - What did the verifier accept and the backend execute?
 - What was later observed, and how strong is the attribution?
 
-Without ownership and provenance, all failures collapse into “the model was wrong.” With them, a failure can be located in source data, computation, model interpretation, memory compilation, retrieval, action conversion, verification, fallback, execution, or outcome attribution.
+Without ownership and provenance, all failures collapse into “the model was wrong.” With them, a failure can be located at a specific stage: source data, computation, model interpretation, memory compilation, retrieval, action conversion, verification, fallback, execution, or outcome attribution.
 
-The most dangerous drift in an LLM system is not a single incorrect field. It is an interpretation copied through enough layers that its source disappears and every component begins treating it as fact. Fixed ownership prevents that drift and gives memory, action, and feedback a trustworthy foundation.
+The most dangerous drift in an LLM system is not a single incorrect field. It is an interpretation copied through enough layers that its source disappears and every component begins treating it as fact. Explicit ownership prevents that drift and gives memory, action, and feedback a trustworthy foundation.

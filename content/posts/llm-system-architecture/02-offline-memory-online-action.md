@@ -13,12 +13,12 @@ math: false
 
 > **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 2 of 11
 
-An LLM system that learns from historical experience and acts online has two fundamentally different jobs:
+An LLM system that learns from historical experience and acts online has two different jobs:
 
 1. produce reusable experience from past evidence;
 2. use authorized experience to make a current decision.
 
-These jobs may reuse the same engineering layers, but they should not share the same information permissions or prompt responsibilities.
+These jobs may reuse the same engineering layers, but they require different information permissions and prompt responsibilities.
 
 The clean boundary is simple: **offline processing produces memory; online control consumes it read-only**.
 
@@ -60,7 +60,7 @@ The offline stage does not directly act on the current environment. Its question
 
 > What should be extracted from historical evidence, and in what structure should it be stored?
 
-A complete offline design must specify:
+A complete offline design specifies:
 
 - **Sources:** historical cases, teacher comparisons, failure traces, replay, or bounded counterfactuals;
 - **Content:** patterns, lessons, warnings, applicability conditions, and possible action implications;
@@ -87,7 +87,7 @@ offline memory:
   structured, versioned, and split-aware
 ```
 
-The result should not be a folder of natural-language summaries. It should be a validated memory asset whose origin and allowed use are explicit.
+The output is not a folder of natural-language summaries. It is a validated memory asset with an explicit origin and usage boundary.
 
 ## Online Action Execution
 
@@ -95,7 +95,7 @@ The online stage asks a different question:
 
 > How is relevant memory retrieved, what information is exposed, what tools are available, and what actions are legal now?
 
-It must define:
+The online design defines:
 
 - how memory is matched to the current state;
 - whether a memory item is a recommendation, warning, gate, or context;
@@ -122,7 +122,7 @@ online memory:
   read-only retrieved evidence plus a utilization audit
 ```
 
-The output of an online decision is not only an action. It is a trace containing retrieval, exposure, model response, validation, verification, fallback, effective action, and outcome.
+An online decision produces both an action and a trace of retrieval, exposure, model response, validation, verification, fallback, effective action, and outcome.
 
 ## What the Two Sides May Share
 
@@ -135,13 +135,13 @@ Offline and online workflows can share generic infrastructure:
 - version tracking;
 - workflow auditing.
 
-They should not share a mutable state or use one prompt for different responsibilities. The offline side produces and validates experience. The online side retrieves an authorized version and acts within a bounded action space.
+Keep mutable state and prompts separate across the two sides. Offline processing produces and validates experience; online control retrieves an authorized version and acts within a bounded action space.
 
 Sharing infrastructure is useful. Sharing information permissions is dangerous.
 
 ## Evaluate Memory Quality and Controller Quality Separately
 
-Offline and online failures should be tested independently.
+Test offline and online failures independently.
 
 Offline comparisons might include:
 
@@ -163,7 +163,7 @@ verifier-only or fallback-only conditions
 restricted vs. expanded action spaces
 ```
 
-Memory use should also be measured as a sequence rather than a binary flag:
+Measure memory use as a sequence rather than a binary flag:
 
 ```text
 memory retrieved

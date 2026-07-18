@@ -1,10 +1,10 @@
 ---
-title: "An LLM System Should Separate Schemas, Prompts, Tools, Workflows, and Memory"
+title: "Separate Schemas, Prompts, Tools, Workflows, and Memory in an LLM System"
 date: 2026-07-17
 draft: false
 weight: 1
 hiddenInHomeList: true
-description: "Why an LLM decision system should be built as five separable layers rather than one increasingly large prompt."
+description: "Why an LLM decision system needs five separable layers rather than one increasingly large prompt."
 tags: ["LLM systems", "agent architecture", "workflows", "auditability"]
 categories: ["technical"]
 showToc: true
@@ -26,11 +26,11 @@ Once the prototype becomes a real decision system, the important questions chang
 - Which retry or fallback path ran after a failure?
 - Can the same decision be replayed and ablated?
 
-At this point, the system should no longer be treated as a large prompt. It should be decomposed into **schemas, prompts, tools, workflows, and memory**.
+At that point, stop treating the system as a large prompt. Decompose it into **schemas, prompts, tools, workflows, and memory**.
 
 ## Why the Five Layers Must Be Separate
 
-Each pair of mixed responsibilities creates a different failure mode.
+Each pair of mixed responsibilities creates a distinct failure mode.
 
 | Responsibilities mixed together | What becomes difficult to verify |
 |---|---|
@@ -40,7 +40,7 @@ Each pair of mixed responsibilities creates a different failure mode.
 | Model decision and verifier | Whether the model bypassed deterministic feasibility checks or repair logic |
 | Run loop and checkpointing | Whether a failed step can be restored, replayed, and diagnosed |
 
-The purpose of separation is not to make the repository look tidy. It is to give every kind of change an owner, a version, a validation rule, and a failure record.
+Separation does more than make the repository look tidy. It gives every kind of change an owner, a version, a validation rule, and a failure record.
 
 ## The Five-Layer Architecture
 
@@ -48,25 +48,25 @@ The purpose of separation is not to make the repository look tidy. It is to give
 
 Schemas define the structural contracts for observations, candidates, actions, memory records, tool calls, and audit events.
 
-A schema turns an informal agreement into something that can be checked by code. It establishes which fields are required, which values are legal, where each field came from, and how invalid states are represented.
+A schema turns an informal agreement into a contract that code can check. It defines required fields, legal values, field origins, and representations for invalid states.
 
 ### Prompt
 
 The prompt translates the current task and the information the model is allowed to use into a readable decision context.
 
-It should explain the task, the action boundary, the visible facts, the relevant history or retrieved experience, the requested justification, and the output contract. It should not become the place where deterministic validation, retry, or execution logic is hidden.
+It explains the task, the action boundary, the visible facts, the relevant history or retrieved experience, the requested justification, and the output contract. Deterministic validation, retry, and execution logic belong elsewhere.
 
 ### Tool
 
 Tools expose typed and restricted capabilities. They may retrieve information, compute a deterministic decomposition, inspect a candidate set, or call an authorized verifier.
 
-A tool should not silently expand the model's authority. If a tool is described as an observation interface but already returns the preferred action, the decision was made by the tool rather than the model.
+A tool must not silently expand the model's authority. If an observation interface already returns the preferred action, the tool, not the model, made the decision.
 
 ### Memory
 
-Memory is a traceable external evidence layer. It should have provenance, applicability conditions, versions, and visibility rules.
+Memory is a traceable external evidence layer with provenance, applicability conditions, versions, and visibility rules.
 
-Historical experience should not be inserted into the live prompt as an untracked paragraph. The workflow should retrieve a specific memory version, expose an authorized view, and record whether that information was cited or used.
+Do not insert historical experience into the live prompt as an untracked paragraph. The workflow retrieves a specific memory version, exposes an authorized view, and records whether the model cited or used it.
 
 ### Workflow
 
@@ -95,7 +95,7 @@ New methods can then replace an evidence adapter, a memory strategy, or an actio
 
 ## How Separation Improves Evaluation
 
-A useful run record should contain more than the final outcome. At minimum, it should make the following questions answerable:
+A useful run record contains more than the final outcome. At minimum, it answers these questions:
 
 - Did the input pass schema validation?
 - Which prompt, tool, workflow, and memory versions were used?
@@ -115,12 +115,12 @@ schema error with retry
 verifier-rejected action
 ```
 
-Those conditions distinguish failures that otherwise collapse into a single statement such as “the model performed poorly.” A memory may not have been retrieved, may have been shown but ignored, may have changed the proposed action, or may have changed an action that the verifier later rejected. These are different system behaviors and should be measured separately.
+Those conditions distinguish failures that otherwise collapse into a single statement such as “the model performed poorly.” A memory may never be retrieved. It may be shown but ignored, change the proposed action, or change an action that the verifier later rejects. Measure these system behaviors separately.
 
 ## Workflow Is More Than Orchestration
 
-The important idea is not merely that an LLM system has five components. It is that the workflow is both an assembly surface and an audit surface.
+The five components alone do not make the architecture auditable. The workflow must serve as both the assembly surface and the audit surface.
 
 Component reuse controls engineering cost. Workflow traces protect the meaning of an experiment and the reliability of a production decision. Without the trace, a modular codebase can still be an opaque system.
 
-A trustworthy LLM decision system is therefore not defined by how sophisticated its prompt is. It is defined by whether each decision can be validated, replayed, and attributed to the component that actually changed it.
+Prompt sophistication does not make an LLM decision system trustworthy. Trust depends on whether each decision can be validated, replayed, and attributed to the component that actually changed it.
