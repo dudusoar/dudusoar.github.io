@@ -72,6 +72,21 @@
     </div>
 </section>
 
+{{- with site.GetPage "/posts/llm-system-architecture" }}
+<section class="home-section home-series" aria-labelledby="featured-series">
+    <div class="home-section__header">
+        <p>Series</p>
+        <h2 id="featured-series">A guided path through the architecture</h2>
+    </div>
+    <a class="home-series-card" href="{{ .RelPermalink }}">
+        <span class="home-series-card__kicker">Blog series · {{ len .RegularPages }} parts</span>
+        <strong>{{ .Title }}</strong>
+        <em>{{ .Description }}</em>
+        <span class="home-series-card__action">Explore the series <span aria-hidden="true">→</span></span>
+    </a>
+</section>
+{{- end }}
+
 {{- $recentPages := where site.RegularPages "Section" "in" (slice "posts" "papers" "projects" "tutorials") }}
 {{- $recentPages = where $recentPages "Params.hiddenInHomeList" "!=" true }}
 {{- $recentPages = first 5 $recentPages }}

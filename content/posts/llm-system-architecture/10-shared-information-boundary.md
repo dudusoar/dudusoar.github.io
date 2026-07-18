@@ -3,7 +3,7 @@ title: "Every Decision Point Needs a Shared Information Boundary"
 date: 2026-07-17
 draft: false
 weight: 10
-series: ["Building Auditable LLM Systems"]
+hiddenInHomeList: true
 description: "Fair online comparison requires every method to decide from the same semantic snapshot and the same boundary on future information."
 tags: ["LLM systems", "online evaluation", "information boundaries", "fair comparison"]
 categories: ["technical"]
@@ -11,7 +11,7 @@ showToc: true
 math: false
 ---
 
-> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 10 of 11
+> **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 10 of 11
 
 An online evaluation is valid only when every decision point begins from a shared boundary on visible information.
 

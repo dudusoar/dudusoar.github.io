@@ -3,7 +3,7 @@ title: "Separate Plausible Environments from LLM Task Distributions"
 date: 2026-07-17
 draft: false
 weight: 4
-series: ["Building Auditable LLM Systems"]
+hiddenInHomeList: true
 description: "Reliable evaluation needs one layer for plausible executable environments and another for meaningful LLM task distributions."
 tags: ["LLM systems", "evaluation", "simulation", "task distributions"]
 categories: ["technical"]
@@ -11,7 +11,7 @@ showToc: true
 math: false
 ---
 
-> **Series:** [Building Auditable LLM Systems](/series/building-auditable-llm-systems/) · Part 4 of 11
+> **Series:** [Building Auditable LLM Systems](/posts/llm-system-architecture/) · Part 4 of 11
 
 Scenario design for an LLM decision system should be split into two layers.
 
