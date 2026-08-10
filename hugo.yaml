@@ -38,7 +38,7 @@ params:
 
   homeInfoParams:
     Title: "Hi, I'm Yuchen"
-    Content: "I work on AI-driven optimization, LLM reasoning systems, and transportation simulation."
+    Content: "I build reliable LLM agents and decision systems at the intersection of machine learning, optimization, and simulation."
 
   socialIcons:
     - name: github
